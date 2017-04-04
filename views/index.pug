@@ -1,0 +1,29 @@
+html 
+  head
+    link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+    link(rel='stylesheet' href="style.css")
+    script(src="jsstyle.js")
+    
+
+
+  body
+   
+   nav.navbar.navbar-default
+    .container
+     .navbar-header
+     ul.nav.navbar-nav
+      li 
+       a(href="index.pug") Home
+      li
+       a(href="About.pug") About site
+  
+   .container.text-center
+    .nav
+     div(draggable='true',ondragstart="dragDiv(event)" class="test" id="designModule") Design for usability
+     div(ondragstart="dragDiv(event)" id="teachingModule" class="test" draggable="true") Teaching at 3
+     
+   div(id="div1" ondrop="dropDiv(event)" style="height:100px;width:250px;" ondragover="preventDefaultBrowserAct(event)")
+   div(id="div2" ondrop="dropDiv(event)" style="height:100px;width:250px;" ondragover="preventDefaultBrowserAct(event)")
+   
+
+     
