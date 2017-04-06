@@ -16,14 +16,32 @@ html
        a(href="index.pug") Home
       li
        a(href="About.pug") About site
-  
-   .container.text-center
-    .nav
-     div(draggable='true',ondragstart="dragDiv(event)" class="test" id="designModule") Design for usability
-     div(ondragstart="dragDiv(event)" id="teachingModule" class="test" draggable="true") Teaching at 3
-     
-   div(id="div1" ondrop="dropDiv(event)" style="height:100px;width:250px;" ondragover="preventDefaultBrowserAct(event)")
-   div(id="div2" ondrop="dropDiv(event)" style="height:100px;width:250px;" ondragover="preventDefaultBrowserAct(event)")
    
+   div.container.text-center
+    .lead Register
+   .jumbotron.center-block
+    .row
+     .col-sm-6
+      form(method="POST" action="/adduser" name="registeruser")
+       .form-group
+        input(type="email" id="registerEmail" class="form-control" name="email" placeholder="Please enter your Coventry University email")
+     .col-sm-6
+      .form-group
+        input(type="password" name="password" id="registerPassword" class="form-control" placeholder="Please enter a password")
+      button(type="submit" class="btn btn-default") Register
+    
+    .container.text-center
+     .lead.loginHeading Login
+    .jumbotron.center-block
+     .row
+      .col-sm-6
+       form(method="POST" action="/login" name="loginUser")
+        .form-group
+         input(type="email" id="registerEmail" class="form-control" name="loginemail" placeholder="Please enter your Coventry University email")
 
-     
+      .col-sm-6
+       .form-group 
+        input(type="password" name="loginpassword" id="registerPassword" class="form-control" placeholder="Please enter your password")
+       button(type="submit" class="btn btn-default") Login
+       
+      

@@ -1,5 +1,30 @@
 html
   head
-    title "Hello"
+    title Your Profile
+    link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+    link(rel='stylesheet' href="style.css")
+    script(src="jsstyle.js")
   body
-    h1 "Twat"
+    nav.navbar.navbar-default
+     .container
+      .navbar-header
+       ul.nav.navbar-nav
+        li 
+         a(href="/") Home
+     .jumbotron
+      h3="Welcome " + email
+      img(src="profilepic.png" id="ProfilePic" style="float:right;width:150px;height:150px")
+      .page-header
+       Modules
+      ul.nav.nav-tabs
+       div(draggable='true',ondragstart="dragDiv(event)" style="float:left;" class="test" id="designModule") Design for usability
+       div(ondragstart="dragDiv(event)" style="float:left;" id="moduleTwo" class="test" draggable="true") Games Programming
+       div(ondragstart="dragDiv(event)" style="float:left;" id="moduleThree" class="test" draggable="true") Research methods
+     .container.text-center
+     div(id="wrapper")
+      div(id="div1" ondrop="dropDiv(event)" style="height:100px;width:250px;float:left;" ondragover="preventDefaultBrowserAct(event)") 
+      div(id="div2" ondrop="dropDiv(event)" style="height:100px;width:250px;margin-left:300px;float:left;" ondragover="preventDefaultBrowserAct(event)")
+      div(id="div3" ondrop="dropDiv(event)" style="height:100px;width:250px;float:right;" ondragover="preventDefaultBrowserAct(event)")
+      
+     
+       

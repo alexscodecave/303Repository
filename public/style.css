@@ -4,15 +4,22 @@
     border:3px solid blue;
 }
 
+.test{
+    margin-left:50px;
+}
 
 #div1{
     display:inline-block;
-    border:1px solid black;
+    border:2px solid black;
 }
 
 #div2{
     
-    border:1px solid black;
+    border:2px solid black;
+}
+
+#div3{
+    border:2px solid black;
 }
 
 progress[value]{
@@ -22,4 +29,8 @@ progress[value]{
 
 .design{
     background:green;
+}
+
+.loginHeading{
+    margin-top:25px;
 }
