@@ -19,9 +19,6 @@ app.get('/', function (req, res) {
     res.render("index")
 })
 
-
-
-
 app.get('/userprofile', function (req, res) {
 
     res.render("userprofile", { email: req.body.loginemail })
