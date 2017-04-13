@@ -33,24 +33,26 @@ app.post("/adduser", function (req, res) { //link to post data to database
         email: req.body.email,
         password: req.body.password
     })
-    users.findOne({ email: req.body.email }, function (err, finduser) {
-        if(err){
+    let response = "User already exists"
+    users.findOne({ email: req.body.email }, function (err, finduser) { //check if user email already in database
+        if (err) {
             console.log(err)
         }
-        if (finduser) {
+        if (finduser) { //if user within email is found then log error
             console.log("User already exists")
-            
+            res.render("index", { response: response })
         }
-        else {
+        else { //else if user is not found then save the data
             userregister.save(function (err, data) {
                 if (err) {
                     console.log(err)
                 } else {
                     console.log("User added")
-                    mongoose.disconnect();
+                    mongoose.disconnect(); //disconnect from mongoose
                     let getemail = userregister.email
-                    let splitemail = getemail.split("@")
-                    res.render("userprofile", { email: splitemail })
+                    let splitemail = getemail.split("@") //split text at the @ symbol
+
+                    res.render("userprofile", { email: splitemail }) //render page and put data into that page
                 }
             })
         }
@@ -63,19 +65,28 @@ app.post("/registerteacher", function (req, res) { //link to post data to databa
         teacherEmail: req.body.emailTeacher,
         teacherPassword: req.body.passwordTeacher
     })
-
-    teacherregister.save(function (err, data) {
-
+    teachers.findOne({ email: req.body.emailTeacher }, function (err, findteacher) {
         if (err) {
             console.log(err)
         }
+        if (findteacher) {
+            console.log("User already exists")
+            res.render("index")
+        }
         else {
-
-            console.log("Teacher Added");
-            mongoose.disconnect();
-
+            teacherregister.save(function (err, data) {
+                if (err) {
+                    console.log(err)
+                }
+                else {
+                    console.log("Teacher Added");
+                    mongoose.disconnect();
+                }
+            })
         }
     })
+
+
 
     res.render("teacherprofile")
 })
