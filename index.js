@@ -88,7 +88,7 @@ app.post("/registerteacher", function (req, res) { //link to post data to databa
     })    
 })
 
-app.post("/login", function (req, res) {
+app.post("/loginuser", function (req, res) {
     //here we are using the exported module to findone instance of email and password within the database
     //if a matching email and password which is entered into the form is found in the database
     users.findOne({ email: req.body.loginemail, password: req.body.loginpassword }, function (err, userdetails) {
@@ -100,8 +100,6 @@ app.post("/login", function (req, res) {
             let splitemail = getemail.split("@")
             res.render("userprofile", { email: splitemail })
             console.log('User found'); //print this to the console.
-        } else {
-            console.log('No login found with those credentials')
         }
     })
 })
@@ -118,7 +116,6 @@ app.post("/loginteacher", function (req, res) {
             let getemail = req.body.loginemailTeacher
             let splitemail = getemail.split("@")
             res.render("teacherprofile", { email: splitemail })
-            console.log('User found'); //print this to the console.
         } else {
 
             console.log("Teacher found");
@@ -127,20 +124,6 @@ app.post("/loginteacher", function (req, res) {
     res.redirect('/')
 })
 
-app.post("/login", function (req, res) {
-    users.findOne({ email: req.body.loginemail, password: req.body.loginpassword }, function (err, userdetails) {
-        if (err) {
-            console.log(err)
-        }
-        else if (userdetails) {
-            res.redirect('/');
-            console.log('User found');
-        } else {
-
-            console.log('No login found with those credentials')
-        }
-    })
-})
 
 app.listen(process.env.port || 3000);
 console.log("Open on port %s", port)
