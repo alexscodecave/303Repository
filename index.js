@@ -33,31 +33,38 @@ app.post("/adduser", function (req, res) { //link to post data to database
         email: req.body.email,
         password: req.body.password
     })
-
-    mongoose.connect(`mongodb://${credentials.user}:${credentials.password}@ds147480.mlab.com:47480/studenttimeline`)
-    userregister.save(function (err, data) {
-        if (err) {
+    users.findOne({ email: req.body.email }, function (err, finduser) {
+        if(err){
             console.log(err)
         }
+        if (finduser) {
+            console.log("User already exists")
+            
+        }
         else {
-            console.log("User Added");   
-            mongoose.disconnect();
+            userregister.save(function (err, data) {
+                if (err) {
+                    console.log(err)
+                } else {
+                    console.log("User added")
+                    mongoose.disconnect();
+                    let getemail = userregister.email
+                    let splitemail = getemail.split("@")
+                    res.render("userprofile", { email: splitemail })
+                }
+            })
         }
     })
-    
-    let getemail = userregister.email
-    let splitemail = getemail.split("@")
-    res.render("userprofile", { email: splitemail })
 })
+
+
 app.post("/registerteacher", function (req, res) { //link to post data to database
     let teacherregister = new teachers({
         teacherEmail: req.body.emailTeacher,
         teacherPassword: req.body.passwordTeacher
     })
-    mongoose.connect('mongodb://alex:123@ds147480.mlab.com:47480/studenttimeline')
-    teacherregister.save(function (err, data) {
 
-    userregister.save(function(err,data) {
+    teacherregister.save(function (err, data) {
 
         if (err) {
             console.log(err)
@@ -66,10 +73,10 @@ app.post("/registerteacher", function (req, res) { //link to post data to databa
 
             console.log("Teacher Added");
             mongoose.disconnect();
-            
+
         }
     })
-    
+
     res.render("teacherprofile")
 })
 
@@ -94,7 +101,8 @@ app.post("/login", function (req, res) {
 app.post("/loginteacher", function (req, res) {
     //here we are using the exported module to findone instance of email and password within the database
     //if a matching email and password which is entered into the form is found in the database
-    teachers.findOne({ email: req.body.loginemailTeacher, password: req.body.loginpasswordTeacher}, function (err, userdetails) {
+    alert("Hello")
+    teachers.findOne({ loginemailTeacher: req.body.loginemailTeacher, loginpasswordTeacher: req.body.loginpasswordTeacher }, function (err, userdetails) {
         if (err) {
             console.log(err)
         }
@@ -105,26 +113,26 @@ app.post("/loginteacher", function (req, res) {
             console.log('User found'); //print this to the console.
         } else {
 
-            console.log("User Added");
+            console.log("Teacher found");
         }
     })
     res.redirect('/')
 })
 
-app.post("/login", function(req,res){
-    users.findOne({email:req.body.loginemail,password:req.body.loginpassword}, function(err,userdetails){
-        if(err){
+app.post("/login", function (req, res) {
+    users.findOne({ email: req.body.loginemail, password: req.body.loginpassword }, function (err, userdetails) {
+        if (err) {
             console.log(err)
         }
-        else if(userdetails){
+        else if (userdetails) {
             res.redirect('/');
             console.log('User found');
-        }else{
+        } else {
 
             console.log('No login found with those credentials')
         }
     })
 })
-})
 
 app.listen(process.env.port || 3000);
+console.log("Open on port %s", port)

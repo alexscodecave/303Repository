@@ -12,9 +12,7 @@
     "body-parser": "^1.17.1",
     "cookie-parser": "^1.4.3",
     "express": "*",
-
     "http": "0.0.0",
-
     "mongoose": "*",
     "nodemon": "*",
     "socket.io": "^1.7.3"
