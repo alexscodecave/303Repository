@@ -29,9 +29,9 @@ html
           form(method='POST', action='/loginuser', name='registeruser')
            .form-group
            .col-sm-6
-            input#registerEmail.form-control(type='email', name='email', placeholder='Please enter your Coventry University email')
+            input#registerEmail.form-control(type='email', name='loginemail', placeholder='Please enter your Coventry University email')
            .col-sm-6
-            input#registerPassword.form-control(type='password', name='password', placeholder='Please enter a password')
+            input#registerPassword.form-control(type='password', name='loginpassword', placeholder='Please enter a password')
             input(type='submit' value='Login')
           .lead Teacher register
           form(method='POST', action='/registerteacher', name='registeruser')
@@ -42,12 +42,12 @@ html
             input#registerPassword.form-control(type='password', name='passwordTeacher', placeholder='Please enter a password')
             input(type='submit' value='Register teacher account')
           .lead Teacher Login
-          form(method='POST', action='/loginteacher', name='registeruser')
+          form(method='POST', action='/loginteacher', name='loginteacher')
            .form-group
            .col-sm-6
-            input#registerEmail.form-control(type='email', name='email', placeholder='Please enter your Coventry University email')
+            input#registerEmail.form-control(type='email', name='loginemailTeacher', placeholder='Please enter your Coventry University email')
            .col-sm-6
-            input#registerPassword.form-control(type='password', name='password', placeholder='Please enter a password')
+            input#registerPassword.form-control(type='password', name='loginpasswordTeacher', placeholder='Please enter a password')
             input(type='submit' value='Register teacher account')
       
     script(src='https://code.jquery.com/jquery-3.2.1.min.js', integrity='sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=', crossorigin='anonymous')
