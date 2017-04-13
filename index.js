@@ -81,14 +81,11 @@ app.post("/registerteacher", function (req, res) { //link to post data to databa
                 else {
                     console.log("Teacher Added");
                     mongoose.disconnect();
+                    res.render("teacherprofile")
                 }
             })
         }
-    })
-
-
-
-    res.render("teacherprofile")
+    })    
 })
 
 app.post("/login", function (req, res) {
