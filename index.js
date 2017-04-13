@@ -5,8 +5,7 @@ const teachers = require("./schema/teacherschema")
 const cParser = require("cookie-parser")
 const bParser = require("body-parser")
 const mongoose = require("mongoose");
-const httpServer = require("http").Server(app)
-const socketio = require("socket.io")(httpServer)
+const credentials = require("./secretfile.js")
 const port = 3000;
 app.use(bParser.json());
 app.use(bParser.urlencoded({
@@ -33,7 +32,7 @@ app.post("/adduser", function (req, res) { //link to post data to database
         email: req.body.email,
         password: req.body.password
     })
-    mongoose.connect('mongodb://alex:123@ds147480.mlab.com:47480/studenttimeline')
+    mongoose.connect(`mongodb://${credentials.user}:${credentials.password}@ds147480.mlab.com:47480/studenttimeline`)
     userregister.save(function (err, data) {
         if (err) {
             console.log(err)
@@ -104,5 +103,5 @@ app.post("/loginteacher", function (req, res) {
     })
 })
 
-httpServer.listen(process.env.port || 3000);
+app.listen(process.env.port || 3000);
 console.log("Listening on port %s", port)
