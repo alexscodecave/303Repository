@@ -20,4 +20,6 @@ function dropDiv(event) {
     event.preventDefault();
     var getDivText = event.dataTransfer.getData("text");
     event.target.appendChild(document.getElementById(getDivText));
+
 }
+

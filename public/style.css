@@ -22,9 +22,22 @@
     border:2px solid black;
 }
 
+#div1{
+    display:inline-block;
+    border:1px solid black;
+}
+
+
+#div2{
+    
+    border:1px solid black;
+
+}
+
 progress[value]{
     width:250px;
     height:20px;
+
 }
 
 .design{
@@ -33,4 +46,5 @@ progress[value]{
 
 .loginHeading{
     margin-top:25px;
+
 }
