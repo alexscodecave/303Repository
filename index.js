@@ -14,7 +14,7 @@ app.use(bParser.urlencoded({
     extended: true
 }));
 app.use(cParser());
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/views'));
 app.set('view engine', 'pug');
 
 app.get('/', function (req, res) {
