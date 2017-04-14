@@ -14,6 +14,9 @@ html
      .jumbotron
       h3="Welcome " + email
       img(src="profilepic.png" id="ProfilePic" style="float:right;width:150px;height:150px")
+
+      form(method="GET" action="logout")
+       input(type="submit" value="Logout")
       .page-header
        Modules
       ul.nav.nav-tabs

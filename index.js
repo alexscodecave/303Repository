@@ -84,6 +84,9 @@ app.post("/registerteacher", function (req, res) { //link to post data to databa
                 else {
                     console.log("Teacher Added");
                     mongoose.disconnect();
+                    let getemail = teachers.emailTeacher
+                    let splitemail = getemail.split("@")
+                    splitemail.pop() //split text at the @ symbol
                     res.render("teacherprofile")
                 }
             })
@@ -101,6 +104,7 @@ app.post("/loginuser", function (req, res) {
         else if (userdetails) {
             let getemail = req.body.loginemail
             let splitemail = getemail.split("@")
+            splitemail.pop()
             res.render("userprofile", { email: splitemail })
             console.log('User found'); //print this to the console.
         }
@@ -127,6 +131,10 @@ app.post("/loginteacher", function (req, res) {
     res.redirect('/')
 })
 
+app.get("/logout",function(req,res){
+    req.destroy();
 
-app.listen(process.env.port || 3000);
+})
+
+app.listen(process.env.PORT || 3000);
 console.log("Open on port %s", port)
