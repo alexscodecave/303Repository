@@ -7,13 +7,11 @@
   "scripts": {
     "start":"node index.js"
   },
-  "engines": { "node": "2.6.10"},
-
   "dependencies": {
     "body-parser": "^1.17.1",
     "cookie-parser": "^1.4.3",
     "express": "*",
-    "http": "0.0.0",
+    "http": "*",
     "mongoose": "*",
     "nodemon": "*",
     "socket.io": "^1.7.3"
