@@ -25,9 +25,10 @@ app.get('/userprofile', function (req, res) {
     res.render("userprofile", { email: req.body.loginemail })
 })
 
-
+/*REGISTER USER */
 
 app.post("/registeruser", function (req, res) { //link to post data to database
+    mongoose.connect('mongodb://alex:123@ds147480.mlab.com:47480/studenttimeline')
     let userregister = new users({
         email: req.body.email,
         password: req.body.password
@@ -60,13 +61,14 @@ app.post("/registeruser", function (req, res) { //link to post data to database
     })
 })
 
-
+/*REGISTER TEACHER */
 app.post("/registerteacher", function (req, res) { //link to post data to database
+    mongoose.connect('mongodb://alex:123@ds147480.mlab.com:47480/studenttimeline')
     let teacherregister = new teachers({
-        teacherEmail: req.body.emailTeacher,
-        teacherPassword: req.body.passwordTeacher
+        teacherEmail: req.body.teacherEmail,
+        teacherPassword: req.body.teacherPassword
     })
-    teachers.findOne({ email: req.body.emailTeacher }, function (err, findteacher) {
+    teachers.findOne({ email: req.body.teacherEmail }, function (err, findteacher) {
         if (err) {
             console.log(err)
         }
@@ -83,19 +85,21 @@ app.post("/registerteacher", function (req, res) { //link to post data to databa
                 else {
                     console.log("Teacher Added");
                     mongoose.disconnect();
-                    let getemail = teachers.emailTeacher
+                    let getemail = teacherregister.emailTeacher
                     let splitemail = getemail.split("@")
                     splitemail.pop() //split text at the @ symbol
-                    res.render("teacherprofile")
+                    res.render("teacherprofile", { email: getemail })
                 }
             })
         }
-    })    
+    })
 })
-
+/*LOGIN USER */
 app.post("/loginuser", function (req, res) {
     //here we are using the exported module to findone instance of email and password within the database
     //if a matching email and password which is entered into the form is found in the database
+    mongoose.connect('mongodb://alex:123@ds147480.mlab.com:47480/studenttimeline')
+    console.log("Hello")
     users.findOne({ email: req.body.loginemail, password: req.body.loginpassword }, function (err, userdetails) {
         if (err) {
             console.log(err)
@@ -113,7 +117,7 @@ app.post("/loginuser", function (req, res) {
 app.post("/loginteacher", function (req, res) {
     //here we are using the exported module to findone instance of email and password within the database
     //if a matching email and password which is entered into the form is found in the database
-    alert("Hello")
+    mongoose.connect('mongodb://alex:123@ds147480.mlab.com:47480/studenttimeline')
     teachers.findOne({ loginemailTeacher: req.body.loginemailTeacher, loginpasswordTeacher: req.body.loginpasswordTeacher }, function (err, userdetails) {
         if (err) {
             console.log(err)
@@ -128,11 +132,6 @@ app.post("/loginteacher", function (req, res) {
         }
     })
     res.redirect('/')
-})
-
-app.get("/logout",function(req,res){
-    req.destroy();
-
 })
 
 app.listen(process.env.PORT || 3000);
