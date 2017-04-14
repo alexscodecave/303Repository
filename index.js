@@ -5,7 +5,7 @@ const teachers = require("./schema/teacherschema")
 const cParser = require("cookie-parser")
 const bParser = require("body-parser")
 const mongoose = require("mongoose");
-const credentials = require("./secretfile.js")
+const credentials = require("../secretfile.js")
 
 
 const port = 3000;
