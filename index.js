@@ -28,7 +28,7 @@ app.get('/userprofile', function (req, res) {
 
 
 
-app.post("/adduser", function (req, res) { //link to post data to database
+app.post("/registeruser", function (req, res) { //link to post data to database
     let userregister = new users({
         email: req.body.email,
         password: req.body.password
@@ -40,6 +40,7 @@ app.post("/adduser", function (req, res) { //link to post data to database
         }
         if (finduser) { //if user within email is found then log error
             console.log("User already exists")
+            alert("User already exists please ensure you typed in the correct email")
             res.render("index", { response: response })
         }
         else { //else if user is not found then save the data
@@ -50,7 +51,8 @@ app.post("/adduser", function (req, res) { //link to post data to database
                     console.log("User added")
                     mongoose.disconnect(); //disconnect from mongoose
                     let getemail = userregister.email
-                    let splitemail = getemail.split("@") //split text at the @ symbol
+                    let splitemail = getemail.split("@")
+                    splitemail.pop() //split text at the @ symbol
 
                     res.render("userprofile", { email: splitemail }) //render page and put data into that page
                 }
@@ -71,6 +73,7 @@ app.post("/registerteacher", function (req, res) { //link to post data to databa
         }
         if (findteacher) {
             console.log("User already exists")
+            alert("User already exists please ensure you typed in the correct email")
             res.render("index")
         }
         else {
