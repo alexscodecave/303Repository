@@ -4,6 +4,7 @@ html
     link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
     link(rel='stylesheet' href="style.css")
     script(src="jsstyle.js")
+    script(src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous")
   body
     nav.navbar.navbar-default
      .container
@@ -11,37 +12,41 @@ html
        ul.nav.navbar-nav
         li 
          a(href="/") Home
-     .jumbotron
+    .jumbotron
+     .container
       h3="Welcome " + email
-      img(src="profilepic.png" id="ProfilePic" style="float:right;width:150px;height:150px")
-
-      form(method="GET" action="logout")
-       input(type="submit" value="Logout")
-      .page-header
-       Modules
-       
+       img(src="profilepic.png" id="ProfilePic" style="float:right;width:150px;height:150px")
+       h3 Modules
       ul.nav.nav-tabs
-       li 
-        a(href="#" data-toggle="tab") Design for usability
-       li
-        a(href="#" data-toggle="tab") Programming
-       li
-        a(href="#" data-toggle="tab") Addvantage 
-      div.tab-content
-       div.tab-pane content
-       div.tab-pane Content 2
-       div.tab-pane Content 3
-        
-       div(draggable='true',ondragstart="dragDiv(event)" style="float:left;" class="test" id="designModule") Design for usability
-       div(ondragstart="dragDiv(event)" style="float:left;" id="moduleTwo" class="test" draggable="true") Games Programming
-       div(ondragstart="dragDiv(event)" style="float:left;" id="moduleThree" class="test" draggable="true") Research methods
-     .container.text-center
+        li(class="active") 
+          a(data-toggle="tab", href="#menu1") Design for usability
+        li
+          a(data-toggle="tab", href="#menu2") Programming
+        li
+          a(data-toggle="tab", href="#menu3") Addvantage 
+        .tab-content.search-tabs-content
+          .tab-pane.active("#menu1")
+            h3.menuOne Menu 1
+          .tab-pane(#menu2)
+            h3 Menu 2
+            p Some more content
+      
+    
+    nav.navbar.navbar-default
+      div(draggable='true',ondragstart="dragDiv(event)" style="float:left;" class="test" id="designModule") Worksheet 1
+      div(ondragstart="dragDiv(event)" style="float:left;" id="moduleTwo" class="test" draggable="true") Worksheet 2
+      div(ondragstart="dragDiv(event)" style="float:left;" id="moduleThree" class="test" draggable="true") Worksheet 3
+    .container.text-center
+     ul.list-inline
+      li 
+       h5 Not started
+      li
+       h5 In completion
+      li
+       h6 Completed
      div(id="wrapper")
-      h5.div1Heading Not started
       div(id="div1" ondrop="dropDiv(event)" style="height:100px;width:250px;float:left;" ondragover="preventDefaultBrowserAct(event)") 
-      h5.div2Heading In completion
       div(id="div2" ondrop="dropDiv(event)" style="height:100px;width:250px;margin-left:300px;float:left;" ondragover="preventDefaultBrowserAct(event)")
-      h5.div3Heading Completed
       div(id="div3" ondrop="dropDiv(event)" style="height:100px;width:250px;float:right;" ondragover="preventDefaultBrowserAct(event)")
       
      

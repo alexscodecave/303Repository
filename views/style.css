@@ -37,6 +37,9 @@
     border:1px solid black;
 
 }
+.menuOne{
+    border:red;
+}
 
 progress[value]{
     width:250px;
