@@ -19,14 +19,29 @@ html
        input(type="submit" value="Logout")
       .page-header
        Modules
+       
       ul.nav.nav-tabs
+       li 
+        a(href="#" data-toggle="tab") Design for usability
+       li
+        a(href="#" data-toggle="tab") Programming
+       li
+        a(href="#" data-toggle="tab") Addvantage 
+      div.tab-content
+       div.tab-pane content
+       div.tab-pane Content 2
+       div.tab-pane Content 3
+        
        div(draggable='true',ondragstart="dragDiv(event)" style="float:left;" class="test" id="designModule") Design for usability
        div(ondragstart="dragDiv(event)" style="float:left;" id="moduleTwo" class="test" draggable="true") Games Programming
        div(ondragstart="dragDiv(event)" style="float:left;" id="moduleThree" class="test" draggable="true") Research methods
      .container.text-center
      div(id="wrapper")
+      h5.div1Heading Not started
       div(id="div1" ondrop="dropDiv(event)" style="height:100px;width:250px;float:left;" ondragover="preventDefaultBrowserAct(event)") 
+      h5.div2Heading In completion
       div(id="div2" ondrop="dropDiv(event)" style="height:100px;width:250px;margin-left:300px;float:left;" ondragover="preventDefaultBrowserAct(event)")
+      h5.div3Heading Completed
       div(id="div3" ondrop="dropDiv(event)" style="height:100px;width:250px;float:right;" ondragover="preventDefaultBrowserAct(event)")
       
      

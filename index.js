@@ -5,6 +5,7 @@ const teachers = require("./schema/teacherschema")
 const cParser = require("cookie-parser")
 const bParser = require("body-parser")
 const mongoose = require("mongoose");
+const socketio = require("socket.io")
 
 
 const port = 3000;
@@ -18,11 +19,6 @@ app.set('view engine', 'pug');
 
 app.get('/', function (req, res) {
     res.render("index")
-})
-
-app.get('/userprofile', function (req, res) {
-
-    res.render("userprofile", { email: req.body.loginemail })
 })
 
 /*REGISTER USER */
@@ -108,6 +104,7 @@ app.post("/loginuser", function (req, res) {
             let getemail = req.body.loginemail
             let splitemail = getemail.split("@")
             splitemail.pop()
+            mongoose.disconnect();
             res.render("userprofile", { email: splitemail })
             console.log('User found'); //print this to the console.
         }
@@ -126,12 +123,15 @@ app.post("/loginteacher", function (req, res) {
             let getemail = req.body.loginemailTeacher
             let splitemail = getemail.split("@")
             res.render("teacherprofile", { email: splitemail })
-        } else {
-
-            console.log("Teacher found");
+            mongoose.disconnect();
+        }
+        else{
+            res.redirect('/')
+            console.log("Teacher not found")
+            mongoose.disconnect();
         }
     })
-    res.redirect('/')
+    
 })
 
 app.listen(process.env.PORT || 3000);
