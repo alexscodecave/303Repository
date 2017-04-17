@@ -12,42 +12,40 @@ html
        ul.nav.navbar-nav
         li 
          a(href="/") Home
+         a(href="/chat")
     .jumbotron
      .container
       h3="Welcome " + email
        img(src="profilepic.png" id="ProfilePic" style="float:right;width:150px;height:150px")
        h3 Modules
       ul.nav.nav-tabs
-        li(class="active") 
-          a(data-toggle="tab", href="#menu1") Design for usability
-        li
-          a(data-toggle="tab", href="#menu2") Programming
-        li
-          a(data-toggle="tab", href="#menu3") Addvantage 
-        .tab-content.search-tabs-content
-          .tab-pane.active("#menu1")
-            h3.menuOne Menu 1
-          .tab-pane(#menu2)
-            h3 Menu 2
-            p Some more content
-      
-    
-    nav.navbar.navbar-default
-      div(draggable='true',ondragstart="dragDiv(event)" style="float:left;" class="test" id="designModule") Worksheet 1
-      div(ondragstart="dragDiv(event)" style="float:left;" id="moduleTwo" class="test" draggable="true") Worksheet 2
-      div(ondragstart="dragDiv(event)" style="float:left;" id="moduleThree" class="test" draggable="true") Worksheet 3
-    .container.text-center
-     ul.list-inline
-      li 
-       h5 Not started
-      li
-       h5 In completion
-      li
-       h6 Completed
-     div(id="wrapper")
-      div(id="div1" ondrop="dropDiv(event)" style="height:100px;width:250px;float:left;" ondragover="preventDefaultBrowserAct(event)") 
-      div(id="div2" ondrop="dropDiv(event)" style="height:100px;width:250px;margin-left:300px;float:left;" ondragover="preventDefaultBrowserAct(event)")
-      div(id="div3" ondrop="dropDiv(event)" style="height:100px;width:250px;float:right;" ondragover="preventDefaultBrowserAct(event)")
-      
-     
+       li.nav-item.active 
+        a(data-toggle="tab", href="#section1") Design for usability
+       li
+        a(data-toggle="tab", href="#menu2") Programming
+       li
+        a(data-toggle="tab", href="#menu3") Addvantage 
+       div.tab-content
+        div#section1.tab-pane
+         h3.menuOne Menu 1
+        div.tab-pane
+         h3 Menu 2
+         p Some more content
+
+      nav.navbar.navbar-default
+        div(draggable='true',ondragstart="dragDiv(event)" style="float:left;" class="test" id="designModule") Worksheet 1
+        div(ondragstart="dragDiv(event)" style="float:left;" id="moduleTwo" class="test" draggable="true") Worksheet 2
+        div(ondragstart="dragDiv(event)" style="float:left;" id="moduleThree" class="test" draggable="true") Worksheet 3
+      .container.text-center
+      .row-fluid
+       .col-sm-4
+        div(id="leftUserBox" ondrop="dropDiv(event);increaseProgress(33);" style="height:100px;width:250px;float:left;" ondragover="preventDefaultBrowserAct(event)")
+       .col-sm-4
+        div(id="middleUserBox" ondrop="dropDiv(event);increaseProgress(66);" style="height:100px;width:250px;" ondragover="preventDefaultBrowserAct(event)")
+       .col-sm-4
+        div(id="rightUserBox" ondrop="dropDiv(event);increaseProgress(100);" style="height:100px;width:250px;float:left;" ondragover="preventDefaultBrowserAct(event)")
+       progress.text-center#workSheetProgress(value='0', max='100')
+      //-  .col-sm-4
+      //-   div(id="rightUserBox" ondrop="dropDiv(event)" style="height:100px;width:250px;" ondragover="preventDefaultBrowserAct(event)")
+
        

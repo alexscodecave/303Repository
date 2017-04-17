@@ -8,7 +8,7 @@
     margin-left:50px;
 }
 
-#div1{
+#leftUserBox{
     display:inline-block;
     border:2px solid black;
 }
@@ -17,33 +17,30 @@
     margin-top:20px;
 }
 
-#div2{
+#middleUserBox{
     
     border:2px solid black;
 }
 
-#div3{
+#rightUserBox{
     border:2px solid black;
 }
 
-#div1{
+#leftUserBox{
     display:inline-block;
     border:2px solid black;
 }
 
-
-#div2{
-    
-    border:1px solid black;
-
-}
-.menuOne{
-    border:red;
+h3.menuOne{
+    border:2px solid red;
+    width:30%;
 }
 
 progress[value]{
     width:250px;
     height:20px;
+    border-radius: 3px;
+    border:2px solid red;
 
 }
 

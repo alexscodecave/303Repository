@@ -21,6 +21,10 @@ app.get('/', function (req, res) {
     res.render("index")
 })
 
+app.get('/chat', function(req,res){
+    res.render("groupchat")
+})
+
 /*REGISTER USER */
 
 app.post("/registeruser", function (req, res) { //link to post data to database

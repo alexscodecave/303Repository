@@ -20,4 +20,11 @@ function dropDiv(event) {
     event.preventDefault();
     var getDivText = event.dataTransfer.getData("text");
     event.target.appendChild(document.getElementById(getDivText));
+    
+}
+
+//function to increase value of progress bar every time work is dropped into completed divs
+function increaseProgress(val){
+    document.getElementById("workSheetProgress").value=val;
+    //get progress bar element and set its value to whatever is entered into the parameter of the function
 }
