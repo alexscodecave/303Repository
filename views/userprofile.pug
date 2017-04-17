@@ -16,26 +16,23 @@ html
     .jumbotron
      .container
       h3="Welcome " + email
-       img(src="profilepic.png" id="ProfilePic" style="float:right;width:150px;height:150px")
-       h3 Modules
-      ul.nav.nav-tabs
-       li.nav-item.active 
-        a(data-toggle="tab", href="#section1") Design for usability
-       li
-        a(data-toggle="tab", href="#menu2") Programming
-       li
-        a(data-toggle="tab", href="#menu3") Addvantage 
-       div.tab-content
-        div#section1.tab-pane
-         h3.menuOne Menu 1
-        div.tab-pane
-         h3 Menu 2
-         p Some more content
-
-      nav.navbar.navbar-default
-        div(draggable='true',ondragstart="dragDiv(event)" style="float:left;" class="test" id="designModule") Worksheet 1
-        div(ondragstart="dragDiv(event)" style="float:left;" id="moduleTwo" class="test" draggable="true") Worksheet 2
-        div(ondragstart="dragDiv(event)" style="float:left;" id="moduleThree" class="test" draggable="true") Worksheet 3
+      h3 Modules
+       button(onclick="showModule('moduleOne')") Design
+       button(onclick="showModule('moduleTwo')") Programming
+       button(onclick="showModule('moduleThree')") Addvantage
+       #moduleOne(name="modules")
+        h2 Design for usability
+        p Taught by John Halloran
+       #moduleTwo(name="modules" style='display:none')
+        h2 Programming 
+        p Taught by James Shuttleworth
+       #moduleThree(name="modules" style='display:none')
+        h2 Addvantage 
+        p Taught by whoever
+      div(ondragstart="dragDiv(event)" style="float:left;" class="worksheetStyle" draggable='true' id="worksheetOne") Worksheet 1
+      div(ondragstart="dragDiv(event)" style="float:left;" class="worksheetStyle" draggable="true" id="worksheetTwo") Worksheet 2
+      div(ondragstart="dragDiv(event)" style="float:left;" class="worksheetStyle" draggable="true" id="worksheetThree") Worksheet 3
+      
       .container.text-center
       .row-fluid
        .col-sm-4

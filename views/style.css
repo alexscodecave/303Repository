@@ -41,7 +41,10 @@ progress[value]{
     height:20px;
     border-radius: 3px;
     border:2px solid red;
+}
 
+.worksheetStyle{
+    margin-left:40px;
 }
 
 .design{
