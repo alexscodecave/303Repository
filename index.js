@@ -110,7 +110,6 @@ app.post("/loginuser", function (req, res) {
             splitemail.pop()
             mongoose.disconnect();
             res.render("userprofile", { email: splitemail })
-            console.log('User found'); //print this to the console.
         }
     })
 })

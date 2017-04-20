@@ -16,10 +16,10 @@ html
     .jumbotron
      .container
       h3="Welcome " + email
-      h3 Modules
-       button(onclick="showModule('moduleOne')") Design
-       button(onclick="showModule('moduleTwo')") Programming
-       button(onclick="showModule('moduleThree')") Addvantage
+      h3 My Modules
+       button(onclick="showModule('moduleOne')" class="btn btn-primary" style="margin-left:10px;" ) Design
+       button(onclick="showModule('moduleTwo')" class="btn btn-primary" style="margin-left:10px;") Programming
+       button(onclick="showModule('moduleThree')" class="btn btn-primary" style="margin-left:10px;") Addvantage
        #moduleOne(name="modules")
         h2 Design for usability
         p Taught by John Halloran
@@ -41,6 +41,7 @@ html
         div(id="middleUserBox" ondrop="dropDiv(event);increaseProgress(66);" style="height:100px;width:250px;" ondragover="preventDefaultBrowserAct(event)")
        .col-sm-4
         div(id="rightUserBox" ondrop="dropDiv(event);increaseProgress(100);" style="height:100px;width:250px;float:left;" ondragover="preventDefaultBrowserAct(event)")
+      .row.progressBar 
        progress.text-center#workSheetProgress(value='0', max='100')
       //-  .col-sm-4
       //-   div(id="rightUserBox" ondrop="dropDiv(event)" style="height:100px;width:250px;" ondragover="preventDefaultBrowserAct(event)")
