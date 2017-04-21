@@ -37,10 +37,10 @@ h3.menuOne{
 }
 
 progress[value]{
-    width:250px;
+    width:1010px;
     height:20px;
     border-radius: 3px;
-    border:2px solid red;
+    margin-left:30px;
 }
 
 .worksheetStyle{

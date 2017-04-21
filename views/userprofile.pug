@@ -12,37 +12,44 @@ html
        ul.nav.navbar-nav
         li 
          a(href="/") Home
-         a(href="/chat")
+        li
+         a(href="/chat") Group chat
     .jumbotron
      .container
       h3="Welcome " + email
       h3 My Modules
-       button(onclick="showModule('moduleOne')" class="btn btn-primary" style="margin-left:10px;" ) Design
-       button(onclick="showModule('moduleTwo')" class="btn btn-primary" style="margin-left:10px;") Programming
-       button(onclick="showModule('moduleThree')" class="btn btn-primary" style="margin-left:10px;") Addvantage
+       button(onclick="showModule('moduleOne');hideWorksheetOne();" class="btn btn-primary" id="DesignModule" style="margin-left:10px;" ) Design
+       button(onclick="showModule('moduleTwo');hideWorksheetThree();" class="btn btn-primary" id="ProgramModule" style="margin-left:10px;") Programming
+       button(onclick="showModule('moduleThree');hideWorksheetFour();" class="btn btn-primary" id="AddVanModule" style="margin-left:10px;") Addvantage
        #moduleOne(name="modules")
-        h2 Design for usability
-        p Taught by John Halloran
+        h4 Design for usability - 203CR
        #moduleTwo(name="modules" style='display:none')
-        h2 Programming 
-        p Taught by James Shuttleworth
+        h4 Programming for algorithms - 210CT
+        
        #moduleThree(name="modules" style='display:none')
-        h2 Addvantage 
-        p Taught by whoever
+        h4 Addvantage - Project Management
+      
+      p#workWeek Week 5
       div(ondragstart="dragDiv(event)" style="float:left;" class="worksheetStyle" draggable='true' id="worksheetOne") Worksheet 1
       div(ondragstart="dragDiv(event)" style="float:left;" class="worksheetStyle" draggable="true" id="worksheetTwo") Worksheet 2
       div(ondragstart="dragDiv(event)" style="float:left;" class="worksheetStyle" draggable="true" id="worksheetThree") Worksheet 3
+      div(ondragstart="dragDiv(event)" style="float:left;" class="worksheetStyle" draggable="true" id="worksheetFour") Worksheet 4
       
       .container.text-center
-      .row-fluid
+      .row
        .col-sm-4
+        button(class="btn btn-default btn-lg" onclick="changeWeekPrevious();" id="btnPreviousWeek")
+         span(class="glyphicon glyphicon-chevron-left" aria-hidden="true")
         div(id="leftUserBox" ondrop="dropDiv(event);increaseProgress(33);" style="height:100px;width:250px;float:left;" ondragover="preventDefaultBrowserAct(event)")
        .col-sm-4
         div(id="middleUserBox" ondrop="dropDiv(event);increaseProgress(66);" style="height:100px;width:250px;" ondragover="preventDefaultBrowserAct(event)")
        .col-sm-4
         div(id="rightUserBox" ondrop="dropDiv(event);increaseProgress(100);" style="height:100px;width:250px;float:left;" ondragover="preventDefaultBrowserAct(event)")
+        button(class="btn btn-default btn-lg" onclick="changeWeekNext();" id="btnNextWeek")
+         span(class="glyphicon glyphicon-chevron-right" aria-hidden="true")
       .row.progressBar 
        progress.text-center#workSheetProgress(value='0', max='100')
+       h4#progressBarValue
       //-  .col-sm-4
       //-   div(id="rightUserBox" ondrop="dropDiv(event)" style="height:100px;width:250px;" ondragover="preventDefaultBrowserAct(event)")
 
