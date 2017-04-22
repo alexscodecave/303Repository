@@ -99,7 +99,6 @@ app.post("/loginuser", function (req, res) {
     //here we are using the exported module to findone instance of email and password within the database
     //if a matching email and password which is entered into the form is found in the database
     mongoose.connect('mongodb://alex:123@ds147480.mlab.com:47480/studenttimeline')
-    console.log("Hello")
     users.findOne({ email: req.body.loginemail, password: req.body.loginpassword }, function (err, userdetails) {
         if (err) {
             console.log(err)

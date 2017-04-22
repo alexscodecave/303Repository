@@ -12,7 +12,10 @@ html
         background-color:white;
         border:2px solid lightblue;
       }
-     
+      #workContent
+      {
+        display:none;
+      }
   body
     nav.navbar.navbar-default
      .container
@@ -33,52 +36,74 @@ html
         h4 Design for usability - 203CR
        #moduleTwo(name="modules" style='display:none')
         h4 Programming for algorithms - 210CT
-        
        #moduleThree(name="modules" style='display:none')
         h4 Addvantage - Project Management
-
-      
-      .container.text-center
-
-      .row.progressBar 
-       progress.text-center#workSheetProgress(value='0', max='100')
-       h4#progressBarValue
        div#timeLineContainer
         h3 Student Timeline
-    script(type='text/javascript').
+      script(type='text/javascript').
+        function showContent(){
+          let getContentOfSheet = document.getElementById("workContent");
+          getContentOfSheet.style.display = 'inline';
+        }
 
-      let timeLineContainer = document.getElementById('timeLineContainer');
-      let DesignForUsability = new vis.DataSet([
-      {id: 1, content: 'Design for usability worksheet one', start: '2017-01-04',end:'2017-01-11'},
-      {id: 2, content: 'Worksheet 2', start: '2017-02-14',end:'2017-02-28'},
-      {id: 3, content: 'Worksheet 3', start: '2017-03-01'},
-      {id: 4, content: 'Worksheet 4', start: '2017-03-09', end: '2014-04-19'},
-      {id: 5, content: 'Worksheet 5', start: '2017-03-17'},
-      {id: 6, content: 'Worksheet 6', start: '2017-04-05', type: 'point'}
-      ]);
-      let Programming = new vis.DataSet([
-      {id: 1, content: 'Programming worksheet one', start: '2017-01-04'},
-      {id: 2, content: 'Worksheet 2', start: '2017-02-11'},
-      {id: 3, content: 'Worksheet 3', start: '2017-03-01'},
-      {id: 4, content: 'Worksheet 4', start: '2017-03-09', end: '2017-03-19'},
-      {id: 5, content: 'Worksheet 5', start: '2017-03-17'},
-      {id: 6, content: 'Worksheet 6', start: '2017-04-05', type: 'point'}
-      ]);
-      let Addvantage = new vis.DataSet([
-      {id: 1, content: 'Addvantage worksheet one', start: '2017-01-04'},
-      {id: 2, content: 'Worksheet 2', start: '2017-02-11'},
-      {id: 3, content: 'Worksheet 3', start: '2017-03-01'},
-      ]);
-      //Allows timeline items to be edited i.e. added/deleted
-      let options = {editable:{
-        add:true,
-        updateTime:true,
-        updateGroup:true,
-        remove:true,
-        overrideItems:true
-      }}
+        function contentForWorksheet(description,deadline){
+          
+          let worksheetDescID = document.getElementById("workSheetDesc");
+          let worksheetDeadline = document.getElementById("worksheetDeadline");
+          worksheetDescID.innerHTML = description;
+          worksheetDeadline.innerHTML = deadline
+        }
+        let designWorkSheetOne = '<a href="#" onclick="showContent();contentForWorksheet(\'hello\',\'goodbye\')" style="text-decoration:none;">Worksheet One</a>';
+        let designWorkSheetTwo = '<a href="#designWorkSheetTwo" style="text-decoration:none;">Worksheet Two</a>';
+        let designWorkSheetThree = '<a href="#designWorkSheetThree" style="text-decoration:none;">Worksheet Three</a>';
+        let programmingWorksheetOne = '<a href="#programmingWorksheetOne" style="text-decoration:none;">Worksheet One</a>';
+        let programmingWorksheetTwo = '<a href="#programmingWorksheetTwo" style="text-decoration:none;">Worksheet Two</a>';
+        let programmingWorksheetThree = '<a href="#programmingWorksheetThree" style="text-decoration:none;">Worksheet Three</a>';
+        let AddvantageWorksheetOne = '<a href="#AddvantageWorksheetOne" style="text-decoration:none;">Worksheet One</a>';
+        let AddvantageWorksheetTwo = '<a href="#AddvantageWorksheetTwo" style="text-decoration:none;">Worksheet Two</a>';
+        let AddvantageWorksheetThree = '<a href="#AddvantageWorksheetThree" style="text-decoration:none;">Worksheet Three</a>';
 
-      // Create a Timeline
-      let timeline = new vis.Timeline(timeLineContainer, Programming, options);
+        let timeLineContainer = document.getElementById('timeLineContainer');
+        let DesignForUsability = new vis.DataSet([
+        {id: 1, content: designWorkSheetOne, start: '2017-01-04',end:'2017-01-11'},
+        {id: 2, content: designWorkSheetTwo, start: '2017-02-14',end:'2017-02-28'},
+        {id: 3, content: designWorkSheetThree, start: '2017-03-01',end:'2017-03-28'},
+        
+        ]);
+        let Programming = new vis.DataSet([
+        {id: 1, content:programmingWorksheetOne , start: '2017-01-04',end:'2017-01-11'},
+        {id: 2, content: programmingWorksheetTwo, start: '2017-02-11',end:'2017-02-21'},
+        {id: 3, content: programmingWorksheetThree, start: '2017-03-01',end:'2017-03-11'},
+        ]);
+        let Addvantage = new vis.DataSet([
+        {id: 1, content: AddvantageWorksheetOne, start: '2017-01-04'},
+        {id: 2, content: AddvantageWorksheetTwo, start: '2017-02-11'},
+        {id: 3, content: AddvantageWorksheetThree, start: '2017-03-01'},
+        ]);
+        //Allows timeline items to be edited i.e. added/deleted
+        let options = {editable:{
+          add:true,
+          updateTime:true,
+          updateGroup:true,
+          remove:true,
+          overrideItems:true
+        }}
 
-       
+        // Create a Timeline
+        let timeline = new vis.Timeline(timeLineContainer, DesignForUsability, options);
+    //- progress.text-center#workSheetProgress(value='40', max='100')
+    //- h4#progressBarValue
+
+    .container.text-center
+      .row.progressBar 
+    div#workContent.container
+     div.row
+      div.col.col-sm-5
+       h3 Worksheet description
+       h5#workSheetDesc
+      div.col.col-sm-5
+       h3 Deadline
+       h5#worksheetDeadline
+      div.col.col-sm-2
+       label Assignment complete
+        input(type="checkbox" id="assignmentComplete") 
