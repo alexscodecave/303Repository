@@ -4,7 +4,15 @@ html
     link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
     link(rel='stylesheet' href="style.css")
     script(src="jsstyle.js")
-    script(src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous")
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/vis/4.19.1/vis.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/vis/4.19.1/vis-timeline-graph2d.min.js')
+    link(href='https://cdnjs.cloudflare.com/ajax/libs/vis/4.19.1/vis-timeline-graph2d.min.css', rel='stylesheet', type='text/css')
+    style.
+      .vis-item{
+        background-color:white;
+        border:2px solid lightblue;
+      }
+     
   body
     nav.navbar.navbar-default
      .container
@@ -28,29 +36,49 @@ html
         
        #moduleThree(name="modules" style='display:none')
         h4 Addvantage - Project Management
-      
-      p#workWeek Week 5
-      div(ondragstart="dragDiv(event)" style="float:left;" class="worksheetStyle" draggable='true' id="worksheetOne") Worksheet 1
-      div(ondragstart="dragDiv(event)" style="float:left;" class="worksheetStyle" draggable="true" id="worksheetTwo") Worksheet 2
-      div(ondragstart="dragDiv(event)" style="float:left;" class="worksheetStyle" draggable="true" id="worksheetThree") Worksheet 3
-      div(ondragstart="dragDiv(event)" style="float:left;" class="worksheetStyle" draggable="true" id="worksheetFour") Worksheet 4
+
       
       .container.text-center
-      .row
-       .col-sm-4
-        button(class="btn btn-default btn-lg" onclick="changeWeekPrevious();" id="btnPreviousWeek")
-         span(class="glyphicon glyphicon-chevron-left" aria-hidden="true")
-        div(id="leftUserBox" ondrop="dropDiv(event);increaseProgress(33);" style="height:100px;width:250px;float:left;" ondragover="preventDefaultBrowserAct(event)")
-       .col-sm-4
-        div(id="middleUserBox" ondrop="dropDiv(event);increaseProgress(66);" style="height:100px;width:250px;" ondragover="preventDefaultBrowserAct(event)")
-       .col-sm-4
-        div(id="rightUserBox" ondrop="dropDiv(event);increaseProgress(100);" style="height:100px;width:250px;float:left;" ondragover="preventDefaultBrowserAct(event)")
-        button(class="btn btn-default btn-lg" onclick="changeWeekNext();" id="btnNextWeek")
-         span(class="glyphicon glyphicon-chevron-right" aria-hidden="true")
+
       .row.progressBar 
        progress.text-center#workSheetProgress(value='0', max='100')
        h4#progressBarValue
-      //-  .col-sm-4
-      //-   div(id="rightUserBox" ondrop="dropDiv(event)" style="height:100px;width:250px;" ondragover="preventDefaultBrowserAct(event)")
+       div#timeLineContainer
+        h3 Student Timeline
+    script(type='text/javascript').
+
+      let timeLineContainer = document.getElementById('timeLineContainer');
+      let DesignForUsability = new vis.DataSet([
+      {id: 1, content: 'Design for usability worksheet one', start: '2017-01-04',end:'2017-01-11'},
+      {id: 2, content: 'Worksheet 2', start: '2017-02-14',end:'2017-02-28'},
+      {id: 3, content: 'Worksheet 3', start: '2017-03-01'},
+      {id: 4, content: 'Worksheet 4', start: '2017-03-09', end: '2014-04-19'},
+      {id: 5, content: 'Worksheet 5', start: '2017-03-17'},
+      {id: 6, content: 'Worksheet 6', start: '2017-04-05', type: 'point'}
+      ]);
+      let Programming = new vis.DataSet([
+      {id: 1, content: 'Programming worksheet one', start: '2017-01-04'},
+      {id: 2, content: 'Worksheet 2', start: '2017-02-11'},
+      {id: 3, content: 'Worksheet 3', start: '2017-03-01'},
+      {id: 4, content: 'Worksheet 4', start: '2017-03-09', end: '2017-03-19'},
+      {id: 5, content: 'Worksheet 5', start: '2017-03-17'},
+      {id: 6, content: 'Worksheet 6', start: '2017-04-05', type: 'point'}
+      ]);
+      let Addvantage = new vis.DataSet([
+      {id: 1, content: 'Addvantage worksheet one', start: '2017-01-04'},
+      {id: 2, content: 'Worksheet 2', start: '2017-02-11'},
+      {id: 3, content: 'Worksheet 3', start: '2017-03-01'},
+      ]);
+      //Allows timeline items to be edited i.e. added/deleted
+      let options = {editable:{
+        add:true,
+        updateTime:true,
+        updateGroup:true,
+        remove:true,
+        overrideItems:true
+      }}
+
+      // Create a Timeline
+      let timeline = new vis.Timeline(timeLineContainer, Programming, options);
 
        

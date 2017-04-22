@@ -19,17 +19,17 @@ function changeWeekPrevious() {
 
 function changeWeekNext() {
     const workWeek = document.getElementById("workWeek"); //contains value of element with id of workWeek
-    if(workWeek.innerHTML === "Week 5"){
+    if (workWeek.innerHTML === "Week 5") {
         workWeek.innerHTML = "Week 6";
     }
-    else if(workWeek.innerHTML === "Week 4"){
+    else if (workWeek.innerHTML === "Week 4") {
         workWeek.innerHTML = "Week 5";
     }
-    
-    else if(workWeek.innerHTML === "Week 3"){
+
+    else if (workWeek.innerHTML === "Week 3") {
         workWeek.innerHTML = "Week 4";
     }
-     //onclick set innerHTML of this element to week 4
+    //onclick set innerHTML of this element to week 4
 }
 
 function hideWorksheetOne() {
