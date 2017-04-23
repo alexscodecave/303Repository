@@ -28,7 +28,6 @@ html
     .jumbotron
      .container
       h3="Welcome " + email
-      h3 My Modules
        button(onclick="showModule('moduleOne');hideWorksheetOne();" class="btn btn-primary" id="DesignModule" style="margin-left:10px;" ) Design
        button(onclick="showModule('moduleTwo');hideWorksheetThree();" class="btn btn-primary" id="ProgramModule" style="margin-left:10px;") Programming
        button(onclick="showModule('moduleThree');hideWorksheetFour();" class="btn btn-primary" id="AddVanModule" style="margin-left:10px;") Addvantage
@@ -53,32 +52,32 @@ html
           worksheetDescID.innerHTML = description;
           worksheetDeadline.innerHTML = deadline
         }
-        let designWorkSheetOne = '<a href="#" onclick="showContent();contentForWorksheet(\'hello\',\'goodbye\')" style="text-decoration:none;">Worksheet One</a>';
-        let designWorkSheetTwo = '<a href="#designWorkSheetTwo" style="text-decoration:none;">Worksheet Two</a>';
-        let designWorkSheetThree = '<a href="#designWorkSheetThree" style="text-decoration:none;">Worksheet Three</a>';
-        let programmingWorksheetOne = '<a href="#programmingWorksheetOne" style="text-decoration:none;">Worksheet One</a>';
-        let programmingWorksheetTwo = '<a href="#programmingWorksheetTwo" style="text-decoration:none;">Worksheet Two</a>';
-        let programmingWorksheetThree = '<a href="#programmingWorksheetThree" style="text-decoration:none;">Worksheet Three</a>';
-        let AddvantageWorksheetOne = '<a href="#AddvantageWorksheetOne" style="text-decoration:none;">Worksheet One</a>';
-        let AddvantageWorksheetTwo = '<a href="#AddvantageWorksheetTwo" style="text-decoration:none;">Worksheet Two</a>';
-        let AddvantageWorksheetThree = '<a href="#AddvantageWorksheetThree" style="text-decoration:none;">Worksheet Three</a>';
+        let designWorkSheetOne = '<h4><a href="#" onclick="showContent();contentForWorksheet(\'To complete this worksheet and obtain a first I will need to see evidence of analysis and evaluation\',\'11-04-2017\')" style="text-decoration:none;">Worksheet One</a></h4>';
+        let designWorkSheetTwo = '<h4><a href="#designWorkSheetTwo" onclick="showContent();contentForWorksheet(\'worksheet 1\',\'worksheet 2 deadline\')" style="text-decoration:none;">Worksheet Two</a></h4>';
+        let designWorkSheetThree = '<h4><a href="#designWorkSheetThree" style="text-decoration:none;">Worksheet Three</a></h4>';
+        let programmingWorksheetOne = '<h4><a href="#programmingWorksheetOne" style="text-decoration:none;">Worksheet One</a></h4>';
+        let programmingWorksheetTwo = '<h4><a href="#programmingWorksheetTwo" style="text-decoration:none;">Worksheet Two</a></h4>';
+        let programmingWorksheetThree = '<h4><a href="#programmingWorksheetThree" style="text-decoration:none;">Worksheet Three</a></h4>';
+        let AddvantageWorksheetOne = '<h4<a href="#AddvantageWorksheetOne" style="text-decoration:none;">Worksheet One</a></h4>';
+        let AddvantageWorksheetTwo = '<h4><a href="#AddvantageWorksheetTwo" style="text-decoration:none;">Worksheet Two</a></h4>';
+        let AddvantageWorksheetThree = '<h4><a href="#AddvantageWorksheetThree" style="text-decoration:none;">Worksheet Three</a></h4>';
 
         let timeLineContainer = document.getElementById('timeLineContainer');
         let DesignForUsability = new vis.DataSet([
-        {id: 1, content: designWorkSheetOne, start: '2017-01-04',end:'2017-01-11'},
-        {id: 2, content: designWorkSheetTwo, start: '2017-02-14',end:'2017-02-28'},
-        {id: 3, content: designWorkSheetThree, start: '2017-03-01',end:'2017-03-28'},
+        {id: 1, content: designWorkSheetOne, start: '2017-04-04',end:'2017-04-11'},
+        {id: 2, content: designWorkSheetTwo, start: '2017-04-14',end:'2017-04-28'},
+        {id: 3, content: designWorkSheetThree, start: '2017-04-01',end:'2017-04-28'},
         
         ]);
         let Programming = new vis.DataSet([
-        {id: 1, content:programmingWorksheetOne , start: '2017-01-04',end:'2017-01-11'},
-        {id: 2, content: programmingWorksheetTwo, start: '2017-02-11',end:'2017-02-21'},
-        {id: 3, content: programmingWorksheetThree, start: '2017-03-01',end:'2017-03-11'},
+        {id: 1, content:programmingWorksheetOne , start: '2017-04-04',end:'2017-04-11'},
+        {id: 2, content: programmingWorksheetTwo, start: '2017-04-11',end:'2017-04-21'},
+        {id: 3, content: programmingWorksheetThree, start: '2017-04-01',end:'2017-04-11'},
         ]);
         let Addvantage = new vis.DataSet([
-        {id: 1, content: AddvantageWorksheetOne, start: '2017-01-04'},
-        {id: 2, content: AddvantageWorksheetTwo, start: '2017-02-11'},
-        {id: 3, content: AddvantageWorksheetThree, start: '2017-03-01'},
+        {id: 1, content: AddvantageWorksheetOne, start: '2017-04-04',end:'2017-04-10'},
+        {id: 2, content: AddvantageWorksheetTwo, start: '2017-04-11',end:'2017-04-16'},
+        {id: 3, content: AddvantageWorksheetThree, start: '2017-04-01',end:'2017-04-20'},
         ]);
         //Allows timeline items to be edited i.e. added/deleted
         let options = {editable:{
