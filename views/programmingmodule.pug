@@ -1,0 +1,144 @@
+html
+  head
+    title Your Profile
+    link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+    link(rel='stylesheet' href="style.css")
+    script(src="jsstyle.js")
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/vis/4.19.1/vis.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/vis/4.19.1/vis-timeline-graph2d.min.js')
+    link(href='https://cdnjs.cloudflare.com/ajax/libs/vis/4.19.1/vis-timeline-graph2d.min.css', rel='stylesheet', type='text/css')
+    style.
+      .vis-item{
+        background-color:white;
+        border:2px solid lightblue;
+      }
+      #workContent
+      {
+        display:none;
+      }
+      #assignmentTableTwo{
+        display:none;
+      }
+      #assignmentTableOne{
+        display:none;
+      }
+  body
+    nav.navbar.navbar-default
+     .container
+      .navbar-header
+       ul.nav.navbar-nav
+        li 
+         a(href="/") Home
+        li
+         a(href="/chat") Group chat
+    .jumbotron
+     .container
+      h3="Welcome "
+       a(href="/designusability")
+        button(onclick="showModule('moduleOne');hideWorksheetOne();" class="btn btn-primary" id="DesignModule" style="margin-left:10px;" ) Design
+       a(href="/programming")
+        button(onclick="showModule('moduleTwo');hideWorksheetThree();" class="btn btn-primary active" id="ProgramModule" style="margin-left:10px;") Programming
+       a(href="/addvantage")
+       button(onclick="showModule('moduleThree');hideWorksheetFour();" class="btn btn-primary" id="AddVanModule" style="margin-left:10px;") Addvantage
+       #moduleOne(name="modules")
+        h4 Design for usability - 203CR
+       #moduleTwo(name="modules" style='display:none')
+        h4 Programming for algorithms - 210CT
+       #moduleThree(name="modules" style='display:none')
+        h4 Addvantage - Project Management
+       div#timeLineContainer
+        h3 Student Timeline
+      script(type='text/javascript').
+        function showContent(){
+          let getContentOfSheet = document.getElementById("workContent");
+          let showTableOne = document.getElementById("assignmentTableOne")
+          let showTableTwo = document.getElementById("assignmentTableTwo")
+          showTableOne.style.display = 'inline';
+          showTableOne.style.float = 'left';
+          showTableTwo.style.display = 'inline';
+          getContentOfSheet.style.display = 'inline';          
+        }
+
+        function contentForWorksheet(description,deadline){
+          
+          let worksheetDescID = document.getElementById("workSheetDesc");
+          let worksheetDeadline = document.getElementById("worksheetDeadline");
+          worksheetDescID.innerHTML = description;
+          worksheetDeadline.innerHTML = deadline
+        }
+        let modulesArray = ['Design for usability','Programming','Addvantage']
+        let groups = new vis.DataSet();
+        
+        let programmingWorksheetOne = '<h5><a href="#programmingWorksheetOne" onclick="showContent();contentForWorksheet(\'Programming assignment 1\',\'11-04-17\')" style="text-decoration:none;">Worksheet One</a></h5>';
+        let programmingWorksheetTwo = '<h5><a href="#programmingWorksheetTwo" onclick="showContent();contentForWorksheet(\'Programming Worksheet 2\',\'21-04-17\')" style="text-decoration:none;">Worksheet Two</a></h5>';
+        let programmingWorksheetThree = '<h5><a href="#programmingWorksheetThree" style="text-decoration:none;">Worksheet Three</a></h5>';
+       
+
+        let timeLineContainer = document.getElementById('timeLineContainer');
+        
+
+        
+        let Programming = new vis.DataSet([
+        {id: 1, content:programmingWorksheetOne , start: '2016-12-01',end:'2017-04-11'},
+        ]);
+        //Allows timeline items to be edited i.e. added/deleted
+        let options = {editable:{
+          add:true,
+          updateTime:true,
+          updateGroup:true,
+          remove:true,
+          overrideItems:true
+        }}
+
+        // Create a Timeline
+        let timeline = new vis.Timeline(timeLineContainer, Programming, options);
+    //- progress.text-center#workSheetProgress(value='40', max='100')
+    //- h4#progressBarValue
+
+    .container.text-center
+      .row.progressBar 
+    div#workContent.container
+     div.row
+      div.col.col-sm-5
+       h3 Worksheet description
+       h5#workSheetDesc
+      div.col.col-sm-5
+       h3 Deadline
+       h5#worksheetDeadline
+      div.col.col-sm-2
+       h3 Worksheet complete?
+       select(id="worksheetCompleteChoice" onchange="changeSelectValue();")
+         option Yes
+         option(selected) No
+      progress(min=0,max=100, value=10 id="progressBar")
+     div.row
+    h4#progressBarValue
+    table(align="left" id="assignmentTableOne")
+     tr
+      th Assignment One
+      th Assignment Two
+      th Assignment Three 
+      th Predicted grade
+     tr
+     tr
+      td 66%
+      td 54%
+      td TBA
+     tr
+    
+    table(align="left" id="assignmentTableTwo")
+     tr
+      th Grade needed in assignment 3 to obtain overall class grade
+     tr
+     tr
+      th 1st
+      th 2:1
+      th 2:2
+      th 3rd
+     tr
+     tr
+      td 74%
+      td 60%
+      td 46%
+      td 40%
+     tr

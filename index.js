@@ -20,6 +20,15 @@ app.set('view engine', 'pug');
 app.get('/', function (req, res) {
     res.render("index")
 })
+app.get('/designusability', function(req,res){
+    res.render("userprofile")
+})
+app.get('/programming', function(req,res){
+    res.render("programmingmodule")
+})
+app.get('/addvantage', function(req,res){
+    res.render("addvantage")
+})
 
 app.get('/chat', function(req,res){
     res.render("groupchat")

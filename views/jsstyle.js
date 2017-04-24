@@ -2,6 +2,70 @@ const getStudentEmail = document.getElementById("registerEmail");
 const getStudentPassword = document.getElementById("registerPassword");
 const btnPreviousWeek = document.getElementById("btnPreviousWeek");
 
+function changeSelectValue(val) {
+    const changeYesNoComplete = document.getElementById("worksheetCompleteChoice")
+    let selectedValue = changeYesNoComplete.options[changeYesNoComplete.selectedIndex].value;
+    if (selectedValue === "Yes") {
+        document.getElementById("progressBar").value = val;
+        const getProgressBarValue = document.getElementById("progressBarValue");
+        getProgressBarValue.textContent = "You have completed " + val + "% of this assignments worksheets";
+    } else if (selectedValue === "No") {
+
+        getProgressBarValue.textContent = "";
+    }
+}
+
+function contentChangeForWorksheetOne(val) {
+    const changeYesNoComplete = document.getElementById("worksheetCompleteChoice")
+    let selectedValue = changeYesNoComplete.options[changeYesNoComplete.selectedIndex].value;
+    if (selectedValue === "Yes") {
+        selectedValue.value = "No";
+        document.getElementById("progressBar").value = val;
+        const getProgressBarValue = document.getElementById("progressBarValue");
+        getProgressBarValue.textContent = "You have completed " + val + "% of this assignments worksheets";
+    } else if (selectedValue === "No") {
+        alert("You have only completed 33% of the necessary requirements")
+        document.getElementById("progressBar").value = "33";
+    }
+}
+
+function contentChangeForWorksheetTwo(val) {
+    const changeYesNoComplete = document.getElementById("worksheetCompleteChoice")
+    let selectedValue = changeYesNoComplete.options[changeYesNoComplete.selectedIndex].value;
+    if (selectedValue === "Yes") {
+        selectedValue.value = "No";
+        document.getElementById("progressBar").value = val;
+        const getProgressBarValue = document.getElementById("progressBarValue");
+        getProgressBarValue.textContent = "You have completed " + val + "% of this assignments worksheets";
+    } else if (selectedValue === "No") {
+        alert("You have only completed 66% of the necessary requirements")
+        document.getElementById("progressBar").value = "66";
+    }
+}
+function contentChangeForWorksheetThree(val) {
+    const changeYesNoComplete = document.getElementById("worksheetCompleteChoice")
+    let selectedValue = changeYesNoComplete.options[changeYesNoComplete.selectedIndex].value;
+    if (selectedValue === "Yes") {
+        selectedValue.value = "No";
+        document.getElementById("progressBar").value = val;
+        const getProgressBarValue = document.getElementById("progressBarValue");
+        getProgressBarValue.textContent = "You have completed " + val + "% of this assignments worksheets";
+        alert("Well done on completing 100% of the worksheets")
+    } else if (selectedValue === "No") {
+        alert("You have only completed 66% of the necessary requirements")
+        document.getElementById("progressBar").value = "66";
+    }
+}
+
+function changeTableData(){
+    let tableDataChange = document.getElementById("tbaTableContent");
+    const getProgressBarValue = document.getElementById("progressBarValue");
+    if(getProgressBarValue.value=="100"){
+        alert("It's 100 well done")
+        tableDataChange.textContent = "68%"
+    }
+}
+
 function changeWeekPrevious() {
     const workWeek = document.getElementById("workWeek"); //contains value of element with id of workWeek
     let numberArray = ["1", "2", "3", "4", "5", "6"]
@@ -17,31 +81,7 @@ function changeWeekPrevious() {
     //onclick set innerHTML of this element to week 4
 }
 
-function changeWeekNext() {
-    const workWeek = document.getElementById("workWeek"); //contains value of element with id of workWeek
-    if (workWeek.innerHTML === "Week 5") {
-        workWeek.innerHTML = "Week 6";
-    }
-    else if (workWeek.innerHTML === "Week 4") {
-        workWeek.innerHTML = "Week 5";
-    }
 
-    else if (workWeek.innerHTML === "Week 3") {
-        workWeek.innerHTML = "Week 4";
-    }
-    //onclick set innerHTML of this element to week 4
-}
-
-function hideWorksheetOne() {
-    let workSheetOne = document.getElementById("worksheetOne");
-    if (workSheetOne.style.opacity !== 0) {
-        workSheetOne.style.opacity = 0;
-        workSheetOne.style.display = 'none'
-    } else {
-        workSheetOne.style.opacity = 1;
-        workSheetOne.style.display = 'inline'
-    }
-}
 
 function hideWorksheetThree() {
     let workSheetThree = document.getElementById("worksheetThree");
@@ -71,37 +111,7 @@ function hideWorksheetFour() {
     }
 }
 
-function checkPWLength() {
-    if (getStudentPassword.length < 6) {
-        alert("Please enter a password longer than 6 characters");
-    }
-}
 
-function preventDefaultBrowserAct(event) {
-    event.preventDefault(); //prevent default 
-    //prevents the browser from acting in the default way
-}
-
-function dragDiv(event) {
-    event.dataTransfer.setData("text", event.target.id);
-}
-
-function dropDiv(event) {
-    event.preventDefault();
-    var getDivText = event.dataTransfer.getData("text");
-    event.target.appendChild(document.getElementById(getDivText));
-    // const leftBox = document.getElementById("leftUserBox");
-    // const middleBox = document.getElementById("middleUserBox");
-    // const rightBox = document.getElementById("rightUserBox");
-    // if($('#leftUserBox').find('#designModule').length==1){
-    //     alert("Correct")
-    // }else if($('#middleUserBox').find('#moduleTwo').length==1){
-    //     alert("Correct on module two")
-    // }
-    // else if($('#rightUserBox').find('#moduleThree').length==1){
-    //     alert("Correct on module three")
-    // }
-}
 
 function showModule(moduleName) {
     //get elements name of modules and put value in moduleElement
@@ -115,15 +125,5 @@ function showModule(moduleName) {
     document.getElementById(moduleName).style.display = "block";
 }
 //function to increase value of progress bar every time work is dropped into completed divs
-function increaseProgress(val) {
-    document.getElementById("workSheetProgress").value = val;
-    const getProgressBarValue = document.getElementById("progressBarValue");
-    getProgressBarValue.textContent = val + "%";
-    if (val === 100) {
-        getProgressBarValue.textContent = "Work completed for the work"
-    }
-    //get progress bar element and set its value to whatever is entered into the parameter of the function
-}
-
 
 

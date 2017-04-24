@@ -16,6 +16,18 @@ html
       {
         display:none;
       }
+      #assignmentTableTwo{
+        display:none;
+      }
+      #assignmentTableOne{
+        display:none;
+      }
+      #assignmentTableThree{
+        display:none;
+      }
+      #resourceHeading{
+        display:none;
+      }
   body
     nav.navbar.navbar-default
      .container
@@ -28,9 +40,12 @@ html
     .jumbotron
      .container
       h3="Welcome " + email
-       button(onclick="showModule('moduleOne');hideWorksheetOne();" class="btn btn-primary" id="DesignModule" style="margin-left:10px;" ) Design
-       button(onclick="showModule('moduleTwo');hideWorksheetThree();" class="btn btn-primary" id="ProgramModule" style="margin-left:10px;") Programming
-       button(onclick="showModule('moduleThree');hideWorksheetFour();" class="btn btn-primary" id="AddVanModule" style="margin-left:10px;") Addvantage
+       a(href="/designusability")
+        button(onclick="hideWorksheetOne();" class="btn btn-primary" id="DesignModule" style="margin-left:10px;" ) Design
+       a(href="/programming")
+        button(onclick="hideWorksheetThree();" class="btn btn-primary" id="ProgramModule" style="margin-left:10px;") Programming
+       a(href="/addvantage")
+        button(onclick="hideWorksheetFour();" class="btn btn-primary" id="AddVanModule" style="margin-left:10px;") Addvantage
        #moduleOne(name="modules")
         h4 Design for usability - 203CR
        #moduleTwo(name="modules" style='display:none')
@@ -42,42 +57,56 @@ html
       script(type='text/javascript').
         function showContent(){
           let getContentOfSheet = document.getElementById("workContent");
-          getContentOfSheet.style.display = 'inline';
+          let showTableOne = document.getElementById("assignmentTableOne")
+          let showTableTwo = document.getElementById("assignmentTableTwo")
+          let showTableThree = document.getElementById("assignmentTableThree")
+          let resourceHeading = document.getElementById("resourceHeading")
+          showTableOne.style.display = 'inline';
+          showTableOne.style.float = 'left';
+          showTableTwo.style.display = 'inline';
+          showTableThree.style.display = 'inline';
+          resourceHeading.style.display = 'inline1;'
+          getContentOfSheet.style.display = 'inline';          
         }
 
         function contentForWorksheet(description,deadline){
-          
           let worksheetDescID = document.getElementById("workSheetDesc");
           let worksheetDeadline = document.getElementById("worksheetDeadline");
           worksheetDescID.innerHTML = description;
           worksheetDeadline.innerHTML = deadline
-        }
-        let designWorkSheetOne = '<h4><a href="#" onclick="showContent();contentForWorksheet(\'To complete this worksheet and obtain a first I will need to see evidence of analysis and evaluation\',\'11-04-2017\')" style="text-decoration:none;">Worksheet One</a></h4>';
-        let designWorkSheetTwo = '<h4><a href="#designWorkSheetTwo" onclick="showContent();contentForWorksheet(\'worksheet 1\',\'worksheet 2 deadline\')" style="text-decoration:none;">Worksheet Two</a></h4>';
-        let designWorkSheetThree = '<h4><a href="#designWorkSheetThree" style="text-decoration:none;">Worksheet Three</a></h4>';
-        let programmingWorksheetOne = '<h4><a href="#programmingWorksheetOne" style="text-decoration:none;">Worksheet One</a></h4>';
-        let programmingWorksheetTwo = '<h4><a href="#programmingWorksheetTwo" style="text-decoration:none;">Worksheet Two</a></h4>';
-        let programmingWorksheetThree = '<h4><a href="#programmingWorksheetThree" style="text-decoration:none;">Worksheet Three</a></h4>';
-        let AddvantageWorksheetOne = '<h4<a href="#AddvantageWorksheetOne" style="text-decoration:none;">Worksheet One</a></h4>';
-        let AddvantageWorksheetTwo = '<h4><a href="#AddvantageWorksheetTwo" style="text-decoration:none;">Worksheet Two</a></h4>';
-        let AddvantageWorksheetThree = '<h4><a href="#AddvantageWorksheetThree" style="text-decoration:none;">Worksheet Three</a></h4>';
+          }
+          
+        let modulesArray = ['Design for usability','Programming','Addvantage']
+        let groups = new vis.DataSet();
+        let designWorkSheetOne = '<h5><a href="#" onclick="showContent();contentChangeForWorksheetOne(33);contentForWorksheet(\'This worksheet involves working in groups of 4 to discuss the benefits of the design elements on the iPhone 7 \',\'11-04-2017\')" style="text-decoration:none;">Worksheet One</a></h5>';
+        let designWorkSheetTwo = '<h5><a href="#designWorkSheetTwo" onclick="showContent();contentChangeForWorksheetTwo(66);contentForWorksheet(\'This involves you creating a paper prototype for a house heating dial interface \',\'15-04-17\')" style="text-decoration:none;">Worksheet Two</a></h5>';
+        let designWorkSheetThree = '<h5><a href="#designWorkSheetThree" onclick="showContent();contentForWorksheet(\'Worksheet 3\',\'15-05-17\');contentChangeForWorksheetThree(100)" style="text-decoration:none;">Worksheet Three</a></h5>';
+        
+        let programmingWorksheetOne = '<h5><a href="#programmingWorksheetOne" onclick="showContent();contentForWorksheet(\'Programming Worksheet 1\',\'11-04-17\')" style="text-decoration:none;">Worksheet One</a></h5>';
+        let programmingWorksheetTwo = '<h5><a href="#programmingWorksheetTwo" onclick="showContent();contentForWorksheet(\'Programming Worksheet 2\',\'21-04-17\')" style="text-decoration:none;">Worksheet Two</a></h5>';
+        let programmingWorksheetThree = '<h5><a href="#programmingWorksheetThree" style="text-decoration:none;">Worksheet Three</a></h5>';
+        
+        let AddvantageWorksheetOne = '<h5><a href="#AddvantageWorksheetOne" style="text-decoration:none;">Worksheet One</a></h5>';
+        let AddvantageWorksheetTwo = '<h5><a href="#AddvantageWorksheetTwo" style="text-decoration:none;">Worksheet Two</a></h5>';
+        let AddvantageWorksheetThree = '<h5><a href="#AddvantageWorksheetThree" style="text-decoration:none;">Worksheet Three</a></h5>';
 
         let timeLineContainer = document.getElementById('timeLineContainer');
+        
         let DesignForUsability = new vis.DataSet([
         {id: 1, content: designWorkSheetOne, start: '2017-04-04',end:'2017-04-11'},
-        {id: 2, content: designWorkSheetTwo, start: '2017-04-14',end:'2017-04-28'},
-        {id: 3, content: designWorkSheetThree, start: '2017-04-01',end:'2017-04-28'},
-        
+        {id: 2, content: designWorkSheetTwo, start: '2017-04-04',end:'2017-04-28'},
+        {id: 3, content: designWorkSheetThree, start: '2017-04-04',end:'2017-05-16'},
         ]);
+        
         let Programming = new vis.DataSet([
-        {id: 1, content:programmingWorksheetOne , start: '2017-04-04',end:'2017-04-11'},
-        {id: 2, content: programmingWorksheetTwo, start: '2017-04-11',end:'2017-04-21'},
-        {id: 3, content: programmingWorksheetThree, start: '2017-04-01',end:'2017-04-11'},
+        {id: 1, content:programmingWorksheetOne , start: '2017-01-10',end:'2017-01-17'},
+        {id: 2, content: programmingWorksheetTwo, start: '2017-01-10',end:'2017-01-24'},
+        {id: 3, content: programmingWorksheetThree, start: '2017-01-10',end:'2017-02-15'},
         ]);
         let Addvantage = new vis.DataSet([
-        {id: 1, content: AddvantageWorksheetOne, start: '2017-04-04',end:'2017-04-10'},
-        {id: 2, content: AddvantageWorksheetTwo, start: '2017-04-11',end:'2017-04-16'},
-        {id: 3, content: AddvantageWorksheetThree, start: '2017-04-01',end:'2017-04-20'},
+        {id: 1, content: AddvantageWorksheetOne, start: '2017-01-11',end:'2017-02-10'},
+        {id: 2, content: AddvantageWorksheetTwo, start: '2017-01-11',end:'2017-03-16'},
+        {id: 3, content: AddvantageWorksheetThree, start: '2017-01-18',end:'2017-04-20'},
         ]);
         //Allows timeline items to be edited i.e. added/deleted
         let options = {editable:{
@@ -90,8 +119,8 @@ html
 
         // Create a Timeline
         let timeline = new vis.Timeline(timeLineContainer, DesignForUsability, options);
-    //- progress.text-center#workSheetProgress(value='40', max='100')
-    //- h4#progressBarValue
+
+    
 
     .container.text-center
       .row.progressBar 
@@ -104,5 +133,65 @@ html
        h3 Deadline
        h5#worksheetDeadline
       div.col.col-sm-2
-       label Assignment complete
-        input(type="checkbox" id="assignmentComplete") 
+       h3 Worksheet complete?
+       select(id="worksheetCompleteChoice"  autocomplete="off")
+         option(value=" " disabled selected) Choose a value
+         option No
+         option Yes
+         
+      progress(min=0,max=100, value=0 id="progressBar") 
+     div.row
+    h4#progressBarValue
+
+    h4#resourceHeading Resources
+    table(align="left" id="assignmentTableThree")
+     tr
+      th Worksheet 1
+      th Worksheet 2
+      th Worksheet 3
+     tr
+     tr
+      td
+       a(href="http://google.com") Apple Website
+      td
+       a(href="http://google.com") Paper prototyping basics
+      td
+       a(href="http://google.com") How to design usability studies
+     tr
+     tr
+      td
+       a(href="http://google.com") How to communicate in a group (book)
+      td
+       a(href="http://google.com") A study into paper prototyping influence on product design 
+      td
+       a(href="http://google.com") The influence of usability design (article)
+
+    table(align="left" id="assignmentTableOne")
+     tr
+      th Worksheet One
+      th Worksheet Two
+      th Worksheet Three 
+      th Predicted grade
+     tr
+     tr
+      td 66%
+      td 54%
+      td#tbaTableContent TBA
+     tr
+    
+    table(align="left" id="assignmentTableTwo")
+     tr
+      th Grade needed in assignment 3 to obtain overall class grade
+     tr
+     tr
+      th 1st
+      th 2:1
+      th 2:2
+      th 3rd
+     tr
+     tr
+      td 74%
+      td 60%
+      td 46%
+      td 40%
+     tr
