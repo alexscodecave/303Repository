@@ -50,6 +50,10 @@ function contentChangeForWorksheetThree(val) {
         document.getElementById("progressBar").value = val;
         const getProgressBarValue = document.getElementById("progressBarValue");
         getProgressBarValue.textContent = "You have completed " + val + "% of this assignments worksheets";
+        let tableDataChange = document.getElementById("tbaTableContent");
+        let predictedGradeContent = document.getElementById("predictedGrade");
+        predictedGradeContent.textContent = "2:1";
+        tableDataChange.textContent = "68%"
         alert("Well done on completing 100% of the worksheets")
     } else if (selectedValue === "No") {
         alert("You have only completed 66% of the necessary requirements")
@@ -58,11 +62,11 @@ function contentChangeForWorksheetThree(val) {
 }
 
 function changeTableData(){
-    let tableDataChange = document.getElementById("tbaTableContent");
+    
     const getProgressBarValue = document.getElementById("progressBarValue");
     if(getProgressBarValue.value=="100"){
         alert("It's 100 well done")
-        tableDataChange.textContent = "68%"
+        
     }
 }
 
