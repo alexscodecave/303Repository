@@ -22,6 +22,9 @@ html
       #assignmentTableOne{
         display:none;
       }
+      ul{
+        list-style-type:none;
+      }
   body
     nav.navbar.navbar-default
      .container
@@ -58,26 +61,26 @@ html
           showTableTwo.style.display = 'inline';
           getContentOfSheet.style.display = 'inline';          
         }
-
-        function contentForWorksheet(description,deadline){
-          
+        function contentForWorksheet(description,deadline){ 
           let worksheetDescID = document.getElementById("workSheetDesc");
           let worksheetDeadline = document.getElementById("worksheetDeadline");
           worksheetDescID.innerHTML = description;
           worksheetDeadline.innerHTML = deadline
         }
+        function alertMe(){
+          alert("Hello")
+        }
         let modulesArray = ['Design for usability','Programming','Addvantage']
         let groups = new vis.DataSet();
         
-        let programmingWorksheetOne = '<h5><a href="#programmingWorksheetOne" onclick="showContent();contentForWorksheet(\'Programming assignment 1\',\'11-04-17\')" style="text-decoration:none;">Worksheet One</a></h5>';
+        let programmingWorksheetOne = '<h5><a href="#programmingWorksheetOne" onclick="alertMe();" style="text-decoration:none;">Quiz One</a></h5>';
         let programmingWorksheetTwo = '<h5><a href="#programmingWorksheetTwo" onclick="showContent();contentForWorksheet(\'Programming Worksheet 2\',\'21-04-17\')" style="text-decoration:none;">Worksheet Two</a></h5>';
         let programmingWorksheetThree = '<h5><a href="#programmingWorksheetThree" style="text-decoration:none;">Worksheet Three</a></h5>';
        
-
         let timeLineContainer = document.getElementById('timeLineContainer');
 
         let Programming = new vis.DataSet([
-        {id: 1, content:programmingWorksheetOne , start: '2016-12-01',end:'2017-04-11'},
+        {id: 1, content:programmingWorksheetOne , start: '2016-02-01',end:'2017-02-11'},
         ]);
         //Allows timeline items to be edited i.e. added/deleted
         let options = {editable:{
@@ -88,55 +91,75 @@ html
           overrideItems:true
         }}
 
+        function answerChecker(){
+          let questionOneAnswerA = document.getElementById("questionOneAnswerA").value
+          let questionTwoAnswerA = document.getElementById("questionTwoAnswerA").checked
+          let questionTwoAnswerB = document.getElementById("questionTwoAnswerB").checked
+          let questionThreeAnswerA = document.getElementById("questionThreeAnswerA").value
+          let questionFourAnswerA = document.getElementById("questionFourAnswerA").checked
+          let questionFourAnswerB = document.getElementById("questionFourAnswerB").checked
+          
+          //- let questionFourAnswerC = document.getElementById("questionFourAnswerC").checked
+          if(questionOneAnswerA==="Python" || questionOneAnswerA==="python"){
+            alert("You got the first answer correct!")
+          }
+          else{
+            alert("Wrong")
+          }
+          if(questionTwoAnswerA){
+            alert("Wrong answer")
+          }else if(questionTwoAnswerB){
+            alert("Correct answer")
+          }
+          if(questionThreeAnswerA==="i=12"){
+            alert("Correct answer for question three")
+          }else{
+            alert("Wrong answer")
+          }
+          if(questionFourAnswerA){
+            alert("Correct answer for question four")
+          }
+          if(questionFourAnswerB){
+            alert("Wrong answer")
+          }
+          if(questionOneAnswerA==="Python" || questionOneAnswerA==="python"&&questionTwoAnswerB&&questionThreeAnswerA==="i=12"&&questionFourAnswerA){
+            alert("All answers correct!")
+          }
+        }
+
         // Create a Timeline
         let timeline = new vis.Timeline(timeLineContainer, Programming, options);
-    //- progress.text-center#workSheetProgress(value='40', max='100')
-    //- h4#progressBarValue
+      div.quizContainer
+        p Quiz regarding content taught in February
+        p What programming language is also the name of a snake?
+        ul.quizQuestionOne
+         li
+          input(type="text" id="questionOneAnswerA")
+        p Was C# created in 1999 or 2000?
+        ul.quizQuestionTwo
+         li
+          input(type="radio" value="1999" id="questionTwoAnswerA")
+          |  1999
+         li
+          input(type="radio" value="2000" id="questionTwoAnswerB") 
+          |  2000
+        p Assign a variable of i equal to 12
+        ul.quizQuestionThree
+         li
+          input(type="text" id="questionThreeAnswerA")
+        p If I were to concatenate the string "8" and "2". What would the answer be?
+        ul.quizQuestionFour
+         li
+          input(type="radio" id="questionFourAnswerA")
+          | 82
+         li
+          input(type="radio" id="questionFourAnswerB")
+          | 10 
+         li
+          input(type="radio" id="questionFourAnswerB")
+          | 16
+        
+        div#showAnswers
+         button(class="btn btn-primary btnShowAnswers" onclick="answerChecker();") Show Answers
 
-    .container.text-center
-      .row.progressBar 
-    div#workContent.container
-     div.row
-      div.col.col-sm-5
-       h3 Worksheet description
-       h5#workSheetDesc
-      div.col.col-sm-5
-       h3 Deadline
-       h5#worksheetDeadline
-      div.col.col-sm-2
-       h3 Worksheet complete?
-       select(id="worksheetCompleteChoice" onchange="changeSelectValue();")
-         option Yes
-         option(selected) No
-      progress(min=0,max=100, value=10 id="progressBar")
-     div.row
-    h4#progressBarValue
-    table(align="left" id="assignmentTableOne")
-     tr
-      th Assignment One
-      th Assignment Two
-      th Assignment Three 
-      th Predicted grade
-     tr
-     tr
-      td 66%
-      td 54%
-      td TBA
-     tr
     
-    table(align="left" id="assignmentTableTwo")
-     tr
-      th Grade needed in assignment 3 to obtain overall class grade
-     tr
-     tr
-      th 1st
-      th 2:1
-      th 2:2
-      th 3rd
-     tr
-     tr
-      td 74%
-      td 60%
-      td 46%
-      td 40%
-     tr

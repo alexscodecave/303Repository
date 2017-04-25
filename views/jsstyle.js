@@ -61,12 +61,30 @@ function contentChangeForWorksheetThree(val) {
     }
 }
 
-function changeTableData(){
-    
+// function answerChecker() {
+//     let questionOneAnswerA = document.getElementById("questionOneAnswerA").value
+//     let questionTwoAnswerA = document.getElementById("questionTwoAnswerA").checked
+//     let questionTwoAnswerB = document.getElementById("questionTwoAnswerA").checked
+//     if (questionFourAnswerA === "Python" || questionFourAnswerA === "python") {
+//         alert("You got the first answer correct!")
+//     }
+//     else {
+//         alert("Wrong")
+//     }
+//     if(questionTwoAnswerA){
+//         alert("Wrong answer for question B")
+//     }
+//     if(questionTwoAnswerB){
+//         alert("Correct answer for question B!")
+//     }
+// }
+
+function changeTableData() {
+
     const getProgressBarValue = document.getElementById("progressBarValue");
-    if(getProgressBarValue.value=="100"){
+    if (getProgressBarValue.value == "100") {
         alert("It's 100 well done")
-        
+
     }
 }
 
