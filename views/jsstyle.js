@@ -148,4 +148,16 @@ function showModule(moduleName) {
 }
 //function to increase value of progress bar every time work is dropped into completed divs
 
+function preventDefaultBehaviour(preventBehaviour) {
+    preventBehaviour.preventDefault();
+}
 
+function allowElementToBeDragged(dragged) {
+    dragged.dataTransfer.setData("text", dragged.target.id);
+}
+
+function allowElementToBeDropped(dropped) {
+    dropped.preventDefault();
+    let heading = dropped.dataTransfer.getData("text");
+    dropped.target.appendChild(document.getElementById(heading));
+}

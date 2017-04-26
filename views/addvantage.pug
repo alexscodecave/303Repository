@@ -22,6 +22,22 @@ html
       #assignmentTableOne{
         display:none;
       }
+      #leftContainer{
+        width:200px;
+        height:150px;
+        border:2px solid black;
+      }
+      #middleContainer{
+        width:200px;
+        height:150px;
+        border:2px solid black;
+      }
+      #rightContainer{
+        width:200px;
+        height:150px;
+        border:2px solid black;
+      }
+      }
   body
     nav.navbar.navbar-default
      .container
@@ -33,13 +49,12 @@ html
      .container
       h3="Welcome "
        a(href="/designusability")
-        button(onclick="showModule('moduleOne');hideWorksheetOne();" class="btn btn-primary" id="DesignModule" style="margin-left:10px;" ) Design
+        button(onclick="showModule('moduleOne');" class="btn btn-primary" id="DesignModule" style="margin-left:10px;" ) Design
        a(href="/programming")
-        button(onclick="showModule('moduleTwo');hideWorksheetThree();" class="btn btn-primary" id="ProgramModule" style="margin-left:10px;") Programming
+        button(onclick="showModule('moduleTwo');" class="btn btn-primary" id="ProgramModule" style="margin-left:10px;") Programming
        a(href="/addvantage")
-        button(onclick="showModule('moduleThree');hideWorksheetFour();" class="btn btn-primary active" id="AddVanModule" style="margin-left:10px;") Addvantage
+        button(onclick="showModule('moduleThree');" class="btn btn-primary active" id="AddVanModule" style="margin-left:10px;") Addvantage
        #moduleOne(name="modules")
-        h4 Design for usability - 203CR
        #moduleTwo(name="modules" style='display:none')
         h4 Programming for algorithms - 210CT
        #moduleThree(name="modules" style='display:none')
@@ -92,4 +107,27 @@ html
     //- h4#progressBarValue
 
     .container.text-center
+     .row
+      .col-sm-6
+       h4(draggable="true" id="designChoice" ondragstart="allowElementToBeDragged(event)") Requirements specification
+       
+       h4(draggable="true" id="programBackChoice" ondragstart="allowElementToBeDragged(event)") Program back-end
+       
+       h4(draggable="true" id="programFrontChoice" ondragstart="allowElementToBeDragged(event)") Program front-end
+       
+       h4(draggable="true" id="designChoice" ondragstart="allowElementToBeDragged(event)") Create designs
+      .col-sm-6
+       h4(id="OneCharacter" ondragstart="allowElementToBeDragged(event)" draggable="true") Jimmy
+ 
+       h4(id="SecondCharacter" ondragstart="allowElementToBeDragged(event)" draggable="true") Arthur
+
+       h4(id="ThirdCharacter" ondragstart="allowElementToBeDragged(event)" draggable="true") Marvin
+     .row
+      .col-sm-4
+       div(id="leftContainer" ondrop="allowElementToBeDropped(event)" ondragover="preventDefaultBehaviour(event)")
+      .col-sm-4
+       div(id="middleContainer" ondrop="allowElementToBeDropped(event)" ondragover="preventDefaultBehaviour(event)")
+      .col-sm-4
+       div(id="RightContainer" ondrop="allowElementToBeDropped(event)" ondragover="preventDefaultBehaviour(event)")
+
       
