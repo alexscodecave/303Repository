@@ -16,14 +16,11 @@ html
       {
         display:none;
       }
-      #assignmentTableTwo{
-        display:none;
-      }
-      #assignmentTableOne{
-        display:none;
-      }
       ul{
         list-style-type:none;
+      }
+      #quizContainer{
+        display:none;
       }
   body
     nav.navbar.navbar-default
@@ -32,8 +29,6 @@ html
        ul.nav.navbar-nav
         li 
          a(href="/") Home
-        li
-         a(href="/chat") Group chat
     .jumbotron
      .container
       h3="Welcome "
@@ -72,15 +67,18 @@ html
         }
         let modulesArray = ['Design for usability','Programming','Addvantage']
         let groups = new vis.DataSet();
-        
-        let programmingWorksheetOne = '<h5><a href="#programmingWorksheetOne" onclick="alertMe();" style="text-decoration:none;">Quiz One</a></h5>';
+        function showContent(){
+          let quizContent = document.getElementById("quizContainer")
+          quizContent.style.display='inline';
+        }
+        let programmingWorksheetOne = '<h5><a href="#programmingWorksheetOne" onclick="showContent();" style="text-decoration:none;">Quiz One</a></h5>';
         let programmingWorksheetTwo = '<h5><a href="#programmingWorksheetTwo" onclick="showContent();contentForWorksheet(\'Programming Worksheet 2\',\'21-04-17\')" style="text-decoration:none;">Worksheet Two</a></h5>';
         let programmingWorksheetThree = '<h5><a href="#programmingWorksheetThree" style="text-decoration:none;">Worksheet Three</a></h5>';
        
         let timeLineContainer = document.getElementById('timeLineContainer');
 
         let Programming = new vis.DataSet([
-        {id: 1, content:programmingWorksheetOne , start: '2016-02-01',end:'2017-02-11'},
+        {id: 1, content:programmingWorksheetOne , start: '2017-02-01',end:'2017-02-11'},
         ]);
         //Allows timeline items to be edited i.e. added/deleted
         let options = {editable:{
@@ -98,68 +96,108 @@ html
           let questionThreeAnswerA = document.getElementById("questionThreeAnswerA").value
           let questionFourAnswerA = document.getElementById("questionFourAnswerA").checked
           let questionFourAnswerB = document.getElementById("questionFourAnswerB").checked
+          let questionFourAnswerC = document.getElementById("questionFourAnswerC").checked
+          let progressBarProgramQuiz = document.getElementById("progressBarProgramQuiz")
+          let showAnswerOne = document.getElementById("showAnswerOne")
+          let showAnswerTwo = document.getElementById("showAnswerTwo")
+          let showAnswerThree = document.getElementById("showAnswerThree")
+          let showAnswerFour = document.getElementById("showAnswerFour")
+          let studentImprovements = document.getElementById("studentImprovements")
           
           //- let questionFourAnswerC = document.getElementById("questionFourAnswerC").checked
           if(questionOneAnswerA==="Python" || questionOneAnswerA==="python"){
-            alert("You got the first answer correct!")
+            showAnswerOne.textContent = "Correct";
+            showAnswerOne.style.color='green';
+            progressBarProgramQuiz.value==25
           }
           else{
-            alert("Wrong")
+            showAnswerOne.textContent = "Incorrect";
+            showAnswerOne.style.color='red';
           }
           if(questionTwoAnswerA){
-            alert("Wrong answer")
+            showAnswerTwo.textContent = "Incorrect";
+            showAnswerTwo.style.color='red';
           }else if(questionTwoAnswerB){
-            alert("Correct answer")
+            showAnswerTwo.textContent = "Correct";
+            showAnswerTwo.style.display = "green";
+            progressBarProgramQuiz.value==50
           }
           if(questionThreeAnswerA==="i=12"){
-            alert("Correct answer for question three")
+            showAnswerThree.textContent = "Correct";
+            progressBarProgramQuiz.value==75
+            
           }else{
-            alert("Wrong answer")
+            showAnswerThree.textContent = "Incorrect";
+            showAnswerThree.style.color='red';
           }
           if(questionFourAnswerA){
-            alert("Correct answer for question four")
+            showAnswerFour.textContent = "Correct";
+            progressBarProgramQuiz.value==100
           }
           if(questionFourAnswerB){
-            alert("Wrong answer")
+            showAnswerFour.textContent = "Incorrect";
+            showAnswerFour.style.color='red';
+          }
+          if(questionFourAnswerC){
+            showAnswerFour.textContent = "Incorrect";
+            showAnswerFour.style.color='red';
           }
           if(questionOneAnswerA==="Python" || questionOneAnswerA==="python"&&questionTwoAnswerB&&questionThreeAnswerA==="i=12"&&questionFourAnswerA){
-            alert("All answers correct!")
-          }
+            progressBarProgramQuiz.value = 100;
+            showAnswerOne.style.color='green';
+            showAnswerTwo.style.color='green';
+            showAnswerThree.style.color='green';
+            showAnswerFour.style.color='green';  
+            studentImprovements.textContent = "To further help your studies for this module it is recommended that you perform further studies outside class to prepare yourself"
+              
+            }
         }
 
         // Create a Timeline
         let timeline = new vis.Timeline(timeLineContainer, Programming, options);
       div.quizContainer
         p Quiz regarding content taught in February
-        p What programming language is also the name of a snake?
+        p Q1- What programming language is also the name of a snake?
         ul.quizQuestionOne
          li
           input(type="text" id="questionOneAnswerA")
-        p Was C# created in 1999 or 2000?
+        p Q2- Was C# created in 1999 or 2000?
         ul.quizQuestionTwo
          li
-          input(type="radio" value="1999" id="questionTwoAnswerA")
+          input(type="radio" name="radiobutton" value="1999" id="questionTwoAnswerA")
           |  1999
          li
-          input(type="radio" value="2000" id="questionTwoAnswerB") 
+          input(type="radio" value="2000" name="radiobutton" id="questionTwoAnswerB") 
           |  2000
-        p Assign a variable of i equal to 12
+        p Q3- Assign a variable of i equal to 12
         ul.quizQuestionThree
          li
           input(type="text" id="questionThreeAnswerA")
-        p If I were to concatenate the string "8" and "2". What would the answer be?
+        p Q4- If I were to concatenate the string "8" and "2". What would the answer be?
         ul.quizQuestionFour
          li
-          input(type="radio" id="questionFourAnswerA")
+          input(type="radio" name="radiobuttonTwo" id="questionFourAnswerA")
           | 82
          li
-          input(type="radio" id="questionFourAnswerB")
+          input(type="radio" name="radiobuttonTwo" id="questionFourAnswerB")
           | 10 
          li
-          input(type="radio" id="questionFourAnswerB")
+          input(type="radio" id="questionFourAnswerC" name="radiobuttonTwo")
           | 16
         
         div#showAnswers
          button(class="btn btn-primary btnShowAnswers" onclick="answerChecker();") Show Answers
+         ul#answerList
+          li
+           h5#showAnswerOne
+          li
+           h5#showAnswerTwo
+          li
+           h5#showAnswerThree
+          li
+           h5#showAnswerFour
+           
+        progress(min=0 value=0 max=100 id="progressBarProgramQuiz")
+        p#studentImprovements
 
     

@@ -29,17 +29,15 @@ html
        ul.nav.navbar-nav
         li 
          a(href="/") Home
-        li
-         a(href="/chat") Group chat
     .jumbotron
      .container
       h3="Welcome "
        a(href="/designusability")
         button(onclick="showModule('moduleOne');hideWorksheetOne();" class="btn btn-primary" id="DesignModule" style="margin-left:10px;" ) Design
        a(href="/programming")
-        button(onclick="showModule('moduleTwo');hideWorksheetThree();" class="btn btn-primary active" id="ProgramModule" style="margin-left:10px;") Programming
+        button(onclick="showModule('moduleTwo');hideWorksheetThree();" class="btn btn-primary" id="ProgramModule" style="margin-left:10px;") Programming
        a(href="/addvantage")
-        button(onclick="showModule('moduleThree');hideWorksheetFour();" class="btn btn-primary" id="AddVanModule" style="margin-left:10px;") Addvantage
+        button(onclick="showModule('moduleThree');hideWorksheetFour();" class="btn btn-primary active" id="AddVanModule" style="margin-left:10px;") Addvantage
        #moduleOne(name="modules")
         h4 Design for usability - 203CR
        #moduleTwo(name="modules" style='display:none')
@@ -94,49 +92,4 @@ html
     //- h4#progressBarValue
 
     .container.text-center
-      .row.progressBar 
-    div#workContent.container
-     div.row
-      div.col.col-sm-5
-       h3 Worksheet description
-       h5#workSheetDesc
-      div.col.col-sm-5
-       h3 Deadline
-       h5#worksheetDeadline
-      div.col.col-sm-2
-       h3 Worksheet complete?
-       select(id="worksheetCompleteChoice" onchange="changeSelectValue();")
-         option Yes
-         option(selected) No
-      progress(min=0,max=100, value=10 id="progressBar")
-     div.row
-    h4#progressBarValue
-    table(align="left" id="assignmentTableOne")
-     tr
-      th Assignment One
-      th Assignment Two
-      th Assignment Three 
-      th Predicted grade
-     tr
-     tr
-      td 66%
-      td 54%
-      td TBA
-     tr
-    
-    table(align="left" id="assignmentTableTwo")
-     tr
-      th Grade needed in assignment 3 to obtain overall class grade
-     tr
-     tr
-      th 1st
-      th 2:1
-      th 2:2
-      th 3rd
-     tr
-     tr
-      td 74%
-      td 60%
-      td 46%
-      td 40%
-     tr
+      
