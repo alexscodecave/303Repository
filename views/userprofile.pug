@@ -24,6 +24,7 @@ html
       }
       #assignmentTableThree{
         display:none;
+        border:1px solid black;
       }
       #resourceHeading{
         display:none;
@@ -66,6 +67,7 @@ html
           showTableTwo.style.display = 'inline';
           showTableThree.style.display = 'inline';
           resourceHeading.style.display = 'inline';
+          resourceHeading.style.float = 'left';
           getContentOfSheet.style.display = 'inline';          
         }
 
@@ -98,16 +100,7 @@ html
         {id: 3, content: designWorkSheetThree, start: '2017-04-04',end:'2017-05-16'},
         ]);
         
-        let Programming = new vis.DataSet([
-        {id: 1, content:programmingWorksheetOne , start: '2017-01-10',end:'2017-01-17'},
-        {id: 2, content: programmingWorksheetTwo, start: '2017-01-10',end:'2017-01-24'},
-        {id: 3, content: programmingWorksheetThree, start: '2017-01-10',end:'2017-02-15'},
-        ]);
-        let Addvantage = new vis.DataSet([
-        {id: 1, content: AddvantageWorksheetOne, start: '2017-01-11',end:'2017-02-10'},
-        {id: 2, content: AddvantageWorksheetTwo, start: '2017-01-11',end:'2017-03-16'},
-        {id: 3, content: AddvantageWorksheetThree, start: '2017-01-18',end:'2017-04-20'},
-        ]);
+
         //Allows timeline items to be edited i.e. added/deleted
         let options = {editable:{
           add:true,
@@ -119,8 +112,6 @@ html
 
         // Create a Timeline
         let timeline = new vis.Timeline(timeLineContainer, DesignForUsability, options);
-
-    
 
     .container.text-center
       .row.progressBar 
@@ -143,8 +134,12 @@ html
      div.row
     h4#progressBarValue
 
-    h4#resourceHeading Resources
+    h4#resourceHeading
     table(align="left" id="assignmentTableThree")
+     tr
+      td(rowspan="6")
+       h4 Resources
+      td
      tr
       th Worksheet 1
       th Worksheet 2
@@ -181,7 +176,7 @@ html
      tr
     
     table(align="left" id="assignmentTableTwo")
-     tr
+     tr(rowspan="6")
       th Grade needed in assignment 3 to obtain overall class grade
      tr
      tr
