@@ -37,7 +37,7 @@ html
        a(href="/programming")
         button(onclick="showModule('moduleTwo');hideWorksheetThree();" class="btn btn-primary active" id="ProgramModule" style="margin-left:10px;") Programming
        a(href="/addvantage")
-       button(onclick="showModule('moduleThree');hideWorksheetFour();" class="btn btn-primary" id="AddVanModule" style="margin-left:10px;") Addvantage
+        button(onclick="showModule('moduleThree');hideWorksheetFour();" class="btn btn-primary" id="AddVanModule" style="margin-left:10px;") Addvantage
        #moduleOne(name="modules")
         h4 Programming for algorithms - 210CT
        #moduleTwo(name="modules" style='display:none')
@@ -140,7 +140,7 @@ html
           else{
             showAnswerFour.textContent = "Incorrect";
             showAnswerFour.style.color='red';
-            progressBarProgramQuiz.value -= 25;
+            
           }
           if(questionOneAnswerA==="Python" || questionOneAnswerA==="python"&&questionTwoAnswerB&&questionThreeAnswerA!="i=12"&&questionFourAnswerA){
             progressBarProgramQuiz.value = 75;
