@@ -119,13 +119,16 @@ html
             showAnswerTwo.style.color='red';
           }else if(questionTwoAnswerB){
             showAnswerTwo.textContent = "Correct";
-            showAnswerTwo.style.display = "green";
+            showAnswerTwo.style.color = "green";
             progressBarProgramQuiz.value==50
           }
-          if(questionThreeAnswerA==="i=12"){
+          else{
+            showAnswerTwo.textContent = "Incorrect";
+            showAnswerTwo.style.color='red';
+          }
+          if(questionThreeAnswerA==="i=12" || questionThreeAnswerA==="i = 12"){
             showAnswerThree.textContent = "Correct";
             progressBarProgramQuiz.value==75
-            
           }else{
             showAnswerThree.textContent = "Incorrect";
             showAnswerThree.style.color='red';
@@ -134,14 +137,20 @@ html
             showAnswerFour.textContent = "Correct";
             progressBarProgramQuiz.value==100
           }
-          if(questionFourAnswerB){
+          else{
             showAnswerFour.textContent = "Incorrect";
             showAnswerFour.style.color='red';
+            progressBarProgramQuiz.value -= 25;
           }
-          if(questionFourAnswerC){
-            showAnswerFour.textContent = "Incorrect";
-            showAnswerFour.style.color='red';
-          }
+          if(questionOneAnswerA==="Python" || questionOneAnswerA==="python"&&questionTwoAnswerB&&questionThreeAnswerA!="i=12"&&questionFourAnswerA){
+            progressBarProgramQuiz.value = 75;
+            showAnswerOne.style.color='green';
+            showAnswerTwo.style.color='green';
+            showAnswerThree.style.color='red';
+            showAnswerFour.style.color='green';  
+            studentImprovements.textContent = "Try to revise the previous worksheets regarding how to assign a variable in Python. However good work on the other 3 questions!"
+              
+            }
           if(questionOneAnswerA==="Python" || questionOneAnswerA==="python"&&questionTwoAnswerB&&questionThreeAnswerA==="i=12"&&questionFourAnswerA){
             progressBarProgramQuiz.value = 100;
             showAnswerOne.style.color='green';
@@ -169,7 +178,7 @@ html
          li
           input(type="radio" value="2000" name="radiobutton" id="questionTwoAnswerB") 
           |  2000
-        p Q3- Assign a variable of i equal to 12
+        p Q3- Assign a variable of i equal to 12 in the Python language
         ul.quizQuestionThree
          li
           input(type="text" id="questionThreeAnswerA")
